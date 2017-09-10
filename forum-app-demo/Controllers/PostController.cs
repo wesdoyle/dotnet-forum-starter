@@ -1,7 +1,8 @@
 ﻿using Forum.Data;
+using Forum.Web.Models.Forum;
 using Microsoft.AspNetCore.Mvc;
 
-namespace forum_app_demo.Controllers
+namespace Forum.Web.Controllers
 {
     public class PostController : Controller
     {

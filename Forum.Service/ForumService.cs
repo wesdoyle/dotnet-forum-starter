@@ -27,7 +27,7 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<Data.Models.Forum> GetAll(int id)
+        public IEnumerable<Data.Models.Forum> GetAll()
         {
             return _context.Forums;
         }

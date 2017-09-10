@@ -6,7 +6,7 @@ namespace Forum.Data
     public interface IForum
     {
         Models.Forum GetById(int id);
-        IEnumerable<Models.Forum> GetAll(int id);
+        IEnumerable<Models.Forum> GetAll();
         Task Create(Models.Forum forum);
         Task Delete(int id);
         Task UpdateForumTitle(int id, string title);
