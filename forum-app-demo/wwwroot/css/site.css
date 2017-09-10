@@ -1,6 +1,30 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #fafafa;
+    background-image: url("/images/mts2.png")
+}
+
+.frontPageTopContainer {
+    padding: 50px 80px 80px 60px;
+    border: 1px solid #999;
+    background-color: #01579b;
+    border-bottom: 1px solid black;
+}
+
+.frontPageHeading {
+    color: #fff;
+    font-family: 'Roboto';
+}
+
+.frontPageTopContainer > h1 {
+    font-size: 1.8em;
+    color: #fff;
+}
+
+.frontPageTopContainer > h2 {
+    font-size: 1.4em;
+    color: #fff;
 }
 
 /* Wrapping element */
@@ -14,22 +38,4 @@
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
 }
