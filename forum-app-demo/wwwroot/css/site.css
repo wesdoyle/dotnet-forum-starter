@@ -5,15 +5,21 @@
     background-image: url("/images/mts2.png")
 }
 
+.navLogo{
+    background-image: url("/images/app-logo-s.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0 16px 0 0;
+    width: 150px;
+    margin-right: 12px;
+}
+
 .frontPageTopContainer {
     padding: 50px 80px 80px 60px;
     border: 1px solid #999;
-    background-color: #01579b;
+    background-color: rgba(1, 87, 155, 0.9);
     border-bottom: 1px solid black;
-}
-
-.frontPageHeading {
-    color: #fff;
     font-family: 'Roboto';
 }
 
@@ -25,6 +31,11 @@
 .frontPageTopContainer > h2 {
     font-size: 1.4em;
     color: #fff;
+}
+
+.frontPageContent {
+    background-color: white;
+    padding: 16px;
 }
 
 /* Wrapping element */
