@@ -13164,9 +13164,9 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wes\\Projects\\ProductiveDev\\forum-app-demo\\forum-app-demo\\forum-app-demo.csproj",
-      "projectName": "forum-app-demo",
-      "projectPath": "C:\\Users\\Wes\\Projects\\ProductiveDev\\forum-app-demo\\forum-app-demo\\forum-app-demo.csproj",
+      "projectUniqueName": "C:\\Users\\Wes\\Projects\\ProductiveDev\\forum-app-demo\\forum-app-demo\\Forum.Web.csproj",
+      "projectName": "Forum.Web",
+      "projectPath": "C:\\Users\\Wes\\Projects\\ProductiveDev\\forum-app-demo\\forum-app-demo\\Forum.Web.csproj",
       "packagesPath": "C:\\Users\\Wes\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Wes\\Projects\\ProductiveDev\\forum-app-demo\\forum-app-demo\\obj\\",
       "projectStyle": "PackageReference",

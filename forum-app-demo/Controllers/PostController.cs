@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Forum.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace forum_app_demo.Controllers
 {
     public class PostController : Controller
     {
+        private IPost _postService;
+
+        public PostController(IPost postService)
+        {
+            _postService = postService;
+        }
+
         public IActionResult Index()
         {
             return View();
