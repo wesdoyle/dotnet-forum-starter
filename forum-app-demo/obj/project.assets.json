@@ -5047,6 +5047,9 @@
       "Forum.Service/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Forum.Data": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Forum.Service.dll": {}
         },

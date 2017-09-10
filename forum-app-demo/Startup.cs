@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using forum_app_demo.Data;
 using forum_app_demo.Models;
 using forum_app_demo.Services;
-using Forum.Data;
 
 namespace forum_app_demo
 {
