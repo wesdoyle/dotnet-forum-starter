@@ -49,6 +49,16 @@
     font-size: 0.8em;
 }
 
+.postLogo {
+    border-radius: 3px;
+    display: inline-block;
+    float:left;
+    margin-right: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: #ddd;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
