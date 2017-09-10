@@ -12,6 +12,8 @@ namespace Forum.Data
         Task Delete(Post post);
         Task EditPostContent(Post post, string content);
 
+        int GetReplyCount(int id);
+
         IEnumerable<Post> GetById(int id);
         IEnumerable<Post> GetPostsByUserId(int id);
         IEnumerable<Post> GetPostsByForumId(int id);
