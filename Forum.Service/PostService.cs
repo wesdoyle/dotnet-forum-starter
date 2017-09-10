@@ -22,22 +22,27 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task Archive(Post post)
+        public async Task Archive(int id)
+        {
+            var post = GetById(id);
+            post.IsArchived = true;
+            _context.Update(post);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var post = GetById(id);
+            _context.Remove(post);
+            await _context.SaveChangesAsync();
+        }
+
+        public Task EditPostContent(int id, string content)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(Post post)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task EditPostContent(Post post, string content)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Post> GetById(int id)
+        public Post GetById(int id)
         {
             throw new NotImplementedException();
         }
