@@ -15,17 +15,26 @@
     margin-right: 12px;
 }
 
+#navbar li {
+    font-weight: bold;
+}
+
 .frontPageTopContainer {
     padding: 50px 80px 80px 60px;
     border: 1px solid #999;
     background-color: rgba(1, 87, 155, 0.9);
     border-bottom: 1px solid black;
     font-family: 'Roboto';
+    background: rgb(29,144,209); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(29,144,209,1) 0%, rgba(4,47,103,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(29,144,209,1) 0%,rgba(4,47,103,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(29,144,209,1) 0%,rgba(4,47,103,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 .frontPageTopContainer > h1 {
     font-size: 1.8em;
     color: #fff;
+    padding: 9px;
 }
 
 .frontPageTopContainer > h2 {
@@ -36,6 +45,12 @@
 .frontPageContent {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 16px;
+}
+
+#latestPosts{
+    font-size: 1.5em;
+    color: #333;
+    margin: 4px 0 16px 0;
 }
 
 .postTitle {
