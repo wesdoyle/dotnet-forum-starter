@@ -4070,6 +4070,9 @@
         }
       },
       "Forum.Service/1.0.0": {
+        "dependencies": {
+          "Forum.Data": "1.0.0"
+        },
         "runtime": {
           "Forum.Service.dll": {}
         },
