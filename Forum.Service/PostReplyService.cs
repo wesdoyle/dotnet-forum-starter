@@ -15,19 +15,24 @@ namespace Forum.Service
             _context = context;
         }
 
-        public Task Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Edit(int id, string message)
-        {
-            throw new NotImplementedException();
-        }
-
         public PostReply GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.PostReplies.Find(id);
+        }
+
+        public async Task Delete(int id)
+        {
+            var reply = GetById(id);
+            _context.Remove(reply);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Edit(int id, string message)
+        {
+            var reply = GetById(id);
+            await _context.SaveChangesAsync();
+            _context.Update(reply);
+            await _context.SaveChangesAsync();
         }
     }
 }

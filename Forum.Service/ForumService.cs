@@ -40,18 +40,18 @@ namespace Forum.Service
         public async Task UpdateForumDescription(int id, string description)
         {
             var forum = GetById(id);
-            _context.Update(forum);
-
             forum.Description = description;
+
+            _context.Update(forum);
             await _context.SaveChangesAsync();
         }
 
         public async Task UpdateForumTitle(int id, string title)
         {
             var forum = GetById(id);
-            _context.Update(forum);
-
             forum.Title = title;
+
+            _context.Update(forum);
             await _context.SaveChangesAsync();
         }
     }
