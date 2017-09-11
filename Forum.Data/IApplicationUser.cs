@@ -1,4 +1,4 @@
-﻿using forum_app_demo.Models;
+﻿using Forum.Data.Models;
 using System.Threading.Tasks;
 
 namespace Forum.Data
