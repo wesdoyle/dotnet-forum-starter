@@ -74,6 +74,7 @@ namespace forum_app_demo.Controllers
 
             var allPosts = forum.Posts.Select(post => new ForumListingPostModel
             {
+                Id = post.Id,
                 Author = post.User.UserName,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
