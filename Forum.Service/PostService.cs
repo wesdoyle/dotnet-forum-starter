@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Forum.Data.Models;
 using System.Threading.Tasks;
 using forum_app_demo.Data;
+using System.Linq;
 
 namespace Forum.Service
 {
@@ -52,22 +53,22 @@ namespace Forum.Service
 
         public IEnumerable<Post> GetPostsBetween(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            return _context.Posts.Where(post => post.Created >= start && post.Created <= end);
         }
 
         public IEnumerable<Post> GetPostsByForumId(int id)
         {
-            throw new NotImplementedException();
+            return _context.Forums.First(forum => forum.Id == id).Posts;
         }
 
         public IEnumerable<Post> GetPostsByUserId(int id)
         {
-            throw new NotImplementedException();
+            return _context.Posts.Where(post => post.User.Id == id.ToString());
         }
 
         public int GetReplyCount(int id)
         {
-            throw new NotImplementedException();
+            return GetById(id).Replies.Count();
         }
     }
 }
