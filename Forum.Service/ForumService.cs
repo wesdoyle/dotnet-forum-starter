@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Forum.Data;
 using Forum.Data.Models;
 using forum_app_demo.Data;
+using System.Linq;
 
 namespace Forum.Service
 {
@@ -45,7 +46,9 @@ namespace Forum.Service
 
         public Post GetLatestPost(int forumId)
         {
-            throw new System.NotImplementedException();
+            return GetById(forumId).Posts
+                .OrderByDescending(post => post.Created)
+                .FirstOrDefault();
         }
 
         public async Task UpdateForumDescription(int id, string description)
