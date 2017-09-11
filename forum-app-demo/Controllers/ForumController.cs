@@ -1,8 +1,10 @@
 ﻿using Forum.Data;
+using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace forum_app_demo.Controllers
@@ -38,12 +40,12 @@ namespace forum_app_demo.Controllers
 
         public ForumListingPostModel GetLatestPost(int forumId)
         {
-
+            var post = _forumService.GetLatestPost(forumId);
         }
 
-        public IEnumerable<ApplicationUserListingModel> GetActiveUsers
+        public IEnumerable<ApplicationUserModel> GetActiveUsers(int forumId)
         {
-
+            var user = _forumService.GetActiveUsers(forumId)
         }
 
         public IActionResult Add()

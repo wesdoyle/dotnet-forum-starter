@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Forum.Data.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Forum.Data
@@ -11,5 +12,7 @@ namespace Forum.Data
         Task Delete(int id);
         Task UpdateForumTitle(int id, string title);
         Task UpdateForumDescription(int id, string description);
+        Post GetLatestPost(int forumId);
+        IEnumerable<ApplicationUser> GetActiveUsers(int forumId);
     }
 }
