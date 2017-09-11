@@ -55,7 +55,7 @@ namespace Forum.Service
             var forum = _context.Forums
                 .Where(f => f.Id == id)
                 .Include(f=>f.Posts)
-                .Include(f=>f.Posts.Select(post=>post.Replies))
+                .ThenInclude(f=>f.Replies)
                 .First();
 
             if(forum.Posts == null)
