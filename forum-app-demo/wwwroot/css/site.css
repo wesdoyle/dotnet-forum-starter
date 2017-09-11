@@ -68,8 +68,8 @@
 }
 
 .postLogo {
+    display: inline-block;
     border-radius: 3px;
-    float:left;
     margin-right: 20px;
     height: 40px;
     width: 40px;
@@ -84,6 +84,10 @@
 
 #forumIndexTable tr:hover {
     background-color: rgba(0, 116, 238, 1);
+}
+
+.forumData {
+    display: inline-block;
 }
 
 .forumTitle {
