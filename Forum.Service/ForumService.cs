@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Forum.Data;
+using Forum.Data.Models;
 using forum_app_demo.Data;
 
 namespace Forum.Service
@@ -27,6 +28,11 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
+        public IEnumerable<ApplicationUser> GetActiveUsers(int forumId)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Data.Models.Forum> GetAll()
         {
             return _context.Forums;
@@ -35,6 +41,11 @@ namespace Forum.Service
         public Data.Models.Forum GetById(int id)
         {
             return _context.Forums.Find(id);
+        }
+
+        public Post GetLatestPost(int forumId)
+        {
+            throw new System.NotImplementedException();
         }
 
         public async Task UpdateForumDescription(int id, string description)

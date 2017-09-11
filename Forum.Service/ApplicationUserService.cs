@@ -1,8 +1,8 @@
 ﻿using Forum.Data;
 using System;
-using forum_app_demo.Models;
 using System.Threading.Tasks;
 using forum_app_demo.Data;
+using Forum.Data.Models;
 
 namespace Forum.Service
 {
