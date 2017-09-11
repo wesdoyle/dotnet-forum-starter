@@ -41,11 +41,17 @@ namespace forum_app_demo.Controllers
         public ForumListingPostModel GetLatestPost(int forumId)
         {
             var post = _forumService.GetLatestPost(forumId);
+            return new ForumListingPostModel
+            {
+                Author = post.User.UserName,
+                DatePosted = post.Created,
+                Title = post.Title
+            };
         }
 
         public IEnumerable<ApplicationUserModel> GetActiveUsers(int forumId)
         {
-            var user = _forumService.GetActiveUsers(forumId)
+            var user = _forumService.GetActiveUsers(forumId);
         }
 
         public IActionResult Add()

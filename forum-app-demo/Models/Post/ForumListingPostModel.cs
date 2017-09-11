@@ -4,8 +4,8 @@ namespace Forum.Web.Models.Post
 {
     public class ForumListingPostModel
     {
-        public string PostDescription { get; set; }
-        public string PostAuthor { get; set; }
-        public DateTime PostDate { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public DateTime DatePosted { get; set; }
     }
 }
