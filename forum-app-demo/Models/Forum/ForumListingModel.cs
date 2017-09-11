@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Forum.Web.Models.Post;
+using System;
+using System.Collections.Generic;
 
 namespace Forum.Web.Models.Forum
 {
@@ -8,6 +10,8 @@ namespace Forum.Web.Models.Forum
         public string Description { get; set; }
         public int NumberOfPosts { get; set; }
         public int NumberOfUsers { get; set; }
-        public DateTime LatestActivity { get; set; }
+
+        public ForumListingPostModel LatestPost { get; set; }
+        public IEnumerable<ForumListingPostModel> AllPosts { get; set; }
     }
 }

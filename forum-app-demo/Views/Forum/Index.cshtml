@@ -5,6 +5,29 @@
     <div id="forumIndexContent">
         <table class="table table-hover" id="forumIndexTable">
             <tbody>
+                @foreach (var forum in Model.ForumList)
+                {
+                    <tr>
+                        <td>
+                            <div class="forumLogo"></div>
+                            <div class="forumTitle">
+                                @forum.Name
+                            </div>
+                            <div class="forumSubTitle">
+                                Latest Post: <span class="postTitle">@forum.LatestPost.Title<span> by <span class="postUser">@forum.LatestPost.Username</span> on <span class="postDate">@forum.LatestPost.Date</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="forumPostCount">
+                                @forum.NumberOfPosts
+                            </div>
+                            <div class="forumMemberCount">
+                                @forum.NumberOfUsers
+                            </div>
+                        </td>
+                    </tr>
+                }
+
                 <tr>
                     <td>
                         <div class="forumLogo"></div>
