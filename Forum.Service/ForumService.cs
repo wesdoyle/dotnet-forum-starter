@@ -4,6 +4,7 @@ using Forum.Data;
 using Forum.Data.Models;
 using forum_app_demo.Data;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forum.Service
 {
@@ -50,7 +51,10 @@ namespace Forum.Service
 
         public Data.Models.Forum GetById(int id)
         {
-            var forum = _context.Forums.Find(id);
+            var forum = _context.Forums
+                .Where(f => f.Id == id)
+                .Include(f=>f.Posts)
+                .First();
 
             if(forum.Posts == null)
             {

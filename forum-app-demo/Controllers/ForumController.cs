@@ -86,7 +86,7 @@ namespace forum_app_demo.Controllers
 
             var model = new ForumListingModel
             {
-                Id = id,
+                Id = forum.Id,
                 Name = forum.Title,
                 Description = forum.Description,
                 AllPosts = allPosts,

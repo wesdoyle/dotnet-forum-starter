@@ -24,9 +24,10 @@ namespace Forum.Web.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Create(int forumId)
+        public IActionResult Create(int id)
         {
-            var forum = _forumService.GetById(forumId);
+            // note id here is Forum.Id
+            var forum = _forumService.GetById(id);
 
             var model = new NewPostModel
             {
@@ -44,7 +45,7 @@ namespace Forum.Web.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             var post = BuildPost(model, user);
             await _postService.Add(post);
-            return RedirectToAction("Forum", "Index");
+            return RedirectToAction("Index", "Forum", model.ForumId);
         }
 
         public Post BuildPost(NewPostModel post, ApplicationUser user)
