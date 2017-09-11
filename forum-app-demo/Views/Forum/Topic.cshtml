@@ -15,46 +15,38 @@
         </div>
     </div>
     <div class="row" id="forumIndexContent">
-        <table class="table table-hover" id="forumIndexTable">
-            <tbody>
-                @foreach (var post in Model.AllPosts)
+        @if (Model.AllPosts.Any())
+        {
+            <table class="table table-hover" id="forumIndexTable">
+                <tbody>
+                    @foreach (var post in Model.AllPosts)
                 {
-                    <tr>
-                        <td>
-                            <div class="forumData">
-                                <div class="forumTitle">
-                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Id">@post.Title</a>
+                        <tr>
+                            <td>
+                                <div class="forumData">
+                                    <div class="forumTitle">
+                                        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Id">@post.Title</a>
+                                    </div>
+                                    <div class="forumSubTitle">
+                                        <div><span class="postTitle">@post.Author</span> on <span class="postDate">@post.DatePosted</span></div>
+                                    </div>
                                 </div>
-                                <div class="forumSubTitle">
-                                    @if (forum.LatestPost.Author != "")
-                                    {
-                                        <div>Latest Post: <span class="postTitle">@forum.LatestPost.Title</span> by <span class="postUser">@forum.LatestPost.Author</span> on <span class="postDate">@forum.LatestPost.DatePosted</span></div>
-                                    }
-
-                                    else
-                                    {
-                                        <span>No posts</span>
-                                    }
+                            </td>
+                            <td>
+                                <div class="forumPostCount">
+                                    @post.RepliesCount
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="forumPostCount">
-                                @forum.NumberOfPosts Posts
-                            </div>
-                            <div class="forumMemberCount">
-                                @forum.NumberOfUsers Users
-                            </div>
-                        </td>
-                        <td>
-                            <div class="forumDescription">
-                                @forum.Description
-                            </div>
-                        </td>
-                    </tr>
-                }
+                            </td>
+                        </tr>
+                    }
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        }
+
+        else
+        {
+            <h3>There are no posts yet. Why not <a asp-controller="Post" asp-action="Create"><span>create one?</span></a></h3>
+        }
     </div>
 </div>
