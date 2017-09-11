@@ -15,6 +15,9 @@ namespace forum_app_demo.Data
         public DbSet<Forum.Data.Models.Forum> Forums { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostReply> PostReplies { get; set; }
+        public DbSet<PrivateMessage> PrivateMessages { get; set; }
+        public DbSet<FeatureType> FeatureTypes { get; set; }
+        public DbSet<UserFeature> UserFeatures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

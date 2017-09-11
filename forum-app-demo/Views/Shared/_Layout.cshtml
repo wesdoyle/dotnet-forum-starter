@@ -21,11 +21,11 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand navLogo" href="#"></a>
+                <a class="navbar-brand navLogo" asp-controller="Home" asp-action="Index"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">All Forums</a></li>
+                    <li class="active"><a asp-controller="Forum" asp-action="Index">All Forums</a></li>
                     <li><a href="#">Favorites</a></li>
                     <li><a href="#">Messages</a></li>
                     <li class="dropdown">
@@ -42,9 +42,16 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar/">Sign In</a></li>
-                    <li><a href="../navbar-static-top/">Sign Out</a></li>
-                    <li class="active"><a href="./">Sign Up</a></li>
+                    @if (!Context.User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Account" asp-action="Login">Sign In</a></li>
+                        <li class="active"><a asp-controller="Account" asp-action="Register">Register</a></li>
+                    }
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li class="navEmail">Logged in as @User.Identity.Name</li>
+                        <li><a asp-controller="Account" asp-action="Logout">Log Out</a></li>
+                    }
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

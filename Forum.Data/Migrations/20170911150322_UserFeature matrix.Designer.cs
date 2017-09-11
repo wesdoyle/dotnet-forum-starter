@@ -11,9 +11,10 @@ using System;
 namespace forum_app_demo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170911150322_UserFeature matrix")]
+    partial class UserFeaturematrix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,20 +76,6 @@ namespace forum_app_demo.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("Forum.Data.Models.FeatureType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FeatureTypes");
                 });
 
             modelBuilder.Entity("Forum.Data.Models.Forum", b =>
@@ -155,48 +142,6 @@ namespace forum_app_demo.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("PostReplies");
-                });
-
-            modelBuilder.Entity("Forum.Data.Models.PrivateMessage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ReceiverId");
-
-                    b.Property<string>("SenderId");
-
-                    b.Property<string>("Subject");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReceiverId");
-
-                    b.HasIndex("SenderId");
-
-                    b.ToTable("PrivateMessages");
-                });
-
-            modelBuilder.Entity("Forum.Data.Models.UserFeature", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("FeatureId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FeatureId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserFeatures");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -323,28 +268,6 @@ namespace forum_app_demo.Data.Migrations
                     b.HasOne("Forum.Data.Models.Post")
                         .WithMany("Replies")
                         .HasForeignKey("PostId");
-
-                    b.HasOne("Forum.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("Forum.Data.Models.PrivateMessage", b =>
-                {
-                    b.HasOne("Forum.Data.Models.ApplicationUser", "Receiver")
-                        .WithMany()
-                        .HasForeignKey("ReceiverId");
-
-                    b.HasOne("Forum.Data.Models.ApplicationUser", "Sender")
-                        .WithMany()
-                        .HasForeignKey("SenderId");
-                });
-
-            modelBuilder.Entity("Forum.Data.Models.UserFeature", b =>
-                {
-                    b.HasOne("Forum.Data.Models.FeatureType", "Feature")
-                        .WithMany()
-                        .HasForeignKey("FeatureId");
 
                     b.HasOne("Forum.Data.Models.ApplicationUser", "User")
                         .WithMany()

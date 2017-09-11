@@ -20,6 +20,12 @@
     font-weight: bold;
 }
 
+.navEmail {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #159;
+}
+
 .sectionHeader{
     background-color: rgba(0,0,0,0.9);
     padding: 8px 0 24px 24px;
@@ -32,6 +38,10 @@
     padding: 16px 0 14px 0;
     border-bottom: 1px solid #444;
     margin-bottom: 8px;
+}
+
+.sectionDescription {
+    color: #eee;
 }
 
 .frontPageTopContainer {
@@ -100,10 +110,6 @@
     background-color: rgba(0, 116, 238, 1);
 }
 
-#forumDisclaimer {
-    color: #eee;
-}
-
 .forumData {
     display: inline-block;
 }
@@ -145,6 +151,21 @@
     color: #888;
     font-family: 'Roboto Mono';
     font-size: 0.9em;
+}
+
+/*Register*/
+
+#registerContent{
+    background-color: white;
+    height: auto;
+    padding: 16px 0 24px 40px;
+}
+
+#registerForm {
+}
+
+#registerBtn {
+    margin-top: 12px;
 }
 
 /* Wrapping element */

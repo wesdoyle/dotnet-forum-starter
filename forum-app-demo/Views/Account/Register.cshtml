@@ -8,16 +8,22 @@
         <div class="sectionHeading">
             @ViewData["Title"]
         </div>
+        <div class="sectionDescription">
+            <p>Create an account to post in the forums.</p>
+        </div>
     </div>
-    <div class="row">
+    <div class="row" id="registerContent">
         <div class="col-md-4">
-            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-                <h4>Create a new account.</h4>
-                <hr />
+            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" id="registerForm">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Email"></label>
                     <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -30,7 +36,7 @@
                     <input asp-for="ConfirmPassword" class="form-control" />
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-default">Register</button>
+                <button type="submit" id="registerBtn" class="btn btn-lg btn-success">Register</button>
             </form>
         </div>
     </div>
