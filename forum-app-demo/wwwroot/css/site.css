@@ -53,6 +53,8 @@
     margin: 4px 0 16px 0;
 }
 
+/* Front page */
+
 .postTitle {
     font-family: 'Roboto';
     font-weight: bold;
@@ -72,6 +74,45 @@
     height: 40px;
     width: 40px;
     background-color: #ddd;
+}
+
+/*Forum index*/
+
+#forumIndexTable td {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.forumTitle {
+    font-family: 'Roboto';
+    font-weight: bold;
+}
+
+.forumSubTitle {
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.8em;
+}
+
+.forumLogo {
+    border-radius: 3px;
+    display: inline-block;
+    float:left;
+    margin-right: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: #ddd;
+}
+
+.forumPostCount{
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.9em;
+}
+
+.forumMemberCount{
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.9em;
 }
 
 /* Wrapping element */
