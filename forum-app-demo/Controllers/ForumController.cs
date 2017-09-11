@@ -42,11 +42,12 @@ namespace forum_app_demo.Controllers
         public ForumListingPostModel GetLatestPost(int forumId)
         {
             var post = _forumService.GetLatestPost(forumId);
+
             return new ForumListingPostModel
             {
-                Author = post.User.UserName,
-                DatePosted = post.Created,
-                Title = post.Title
+                Author = post.User != null ? post.User.UserName : "", 
+                DatePosted = post.Created != null ? post.Created.ToString() : "",
+                Title = post.Title ?? "" 
             };
         }
 

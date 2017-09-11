@@ -31,7 +31,16 @@ namespace Forum.Service
 
         public IEnumerable<ApplicationUser> GetActiveUsers(int forumId)
         {
-            throw new System.NotImplementedException();
+            var forum = GetById(forumId);
+
+            var activeUsers = new List<ApplicationUser>();
+            var postingUsers = forum.Posts.Select(p => p.User).Distinct();
+            var replyingUsers = forum.Posts.SelectMany(p => p.Replies).Select(r => r.User).Distinct();
+
+            activeUsers.AddRange(postingUsers);
+            activeUsers.AddRange(replyingUsers);
+
+            return activeUsers.Distinct();
         }
 
         public IEnumerable<Data.Models.Forum> GetAll()
@@ -46,9 +55,16 @@ namespace Forum.Service
 
         public Post GetLatestPost(int forumId)
         {
-            return GetById(forumId).Posts
-                .OrderByDescending(post => post.Created)
-                .FirstOrDefault();
+            var posts = GetById(forumId).Posts;
+
+            if(posts != null)
+            {
+                return GetById(forumId).Posts
+                    .OrderByDescending(post => post.Created)
+                    .FirstOrDefault();
+            }
+
+            return new Post();
         }
 
         public async Task UpdateForumDescription(int id, string description)
