@@ -2,7 +2,8 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #fafafa;
-    background-image: url("/images/mts2.png")
+    background-image: url("/images/mts2.png");
+    background-attachment: fixed;
 }
 
 .navLogo{
@@ -78,7 +79,11 @@
 /*Forum index*/
 
 #forumIndexTable td {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#forumIndexTable tr:hover {
+    background-color: rgba(0, 116, 238, 1);
 }
 
 .forumTitle {
@@ -92,6 +97,11 @@
     font-size: 0.8em;
 }
 
+.forumDescription {
+    color: #555;
+    font-family: 'Roboto';
+}
+
 .forumLogo {
     border-radius: 3px;
     float:left;
@@ -99,6 +109,7 @@
     height: 40px;
     width: 40px;
     background-color: #ddd;
+    border: 1px solid #555;
 }
 
 .forumPostCount{
