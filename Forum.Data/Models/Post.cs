@@ -1,5 +1,4 @@
-﻿using forum_app_demo.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Forum.Data.Models
@@ -14,5 +13,6 @@ namespace Forum.Data.Models
         public bool IsArchived { get; set; }
 
         public virtual IEnumerable<PostReply> Replies { get; set; }
+        public virtual Forum Forum { get; set; }
     }
 }

@@ -34,7 +34,6 @@ namespace Forum.Web.Controllers
                 Title = post.Title,
                 Content = post.Content,
                 Created = post.Created,
-                ForumName = post.Forum.Name
             };
 
             return View(model);
