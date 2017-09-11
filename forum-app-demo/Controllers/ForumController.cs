@@ -46,15 +46,16 @@ namespace forum_app_demo.Controllers
 
             return new ForumListingPostModel
             {
-                Author = post.User != null ? post.User.UserName : "", 
+                Author = post.User != null ? post.User.UserName : "",
                 DatePosted = post.Created != null ? post.Created.ToString() : "",
-                Title = post.Title ?? "" 
+                Title = post.Title ?? ""
             };
         }
 
         public IEnumerable<ApplicationUserModel> GetActiveUsers(int forumId)
         {
-            return _forumService.GetActiveUsers(forumId).Select(appUser => new ApplicationUserModel {
+            return _forumService.GetActiveUsers(forumId).Select(appUser => new ApplicationUserModel
+            {
                 Id = Convert.ToInt32(appUser.Id),
                 ProfileImageUrl = appUser.ProfileImageUrl,
                 Rating = appUser.Rating,
