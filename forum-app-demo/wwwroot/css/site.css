@@ -86,8 +86,26 @@
     background-color: rgba(0, 116, 238, 1);
 }
 
+#forumHeader{
+    background-color: rgba(0,0,0,0.9);
+    padding: 8px 0 24px 24px;
+}
+
+#forumDisclaimer {
+    color: #eee;
+}
+
 .forumData {
     display: inline-block;
+}
+
+.forumHeading{
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Roboto';
+    padding: 16px 0 14px 0;
+    border-bottom: 1px solid #444;
+    margin-bottom: 8px;
 }
 
 .forumTitle {
