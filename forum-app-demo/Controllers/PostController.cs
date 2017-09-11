@@ -1,5 +1,6 @@
 ﻿using Forum.Data;
 using Forum.Web.Models.Forum;
+using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.Web.Controllers
@@ -18,14 +19,25 @@ namespace Forum.Web.Controllers
             return View();
         }
 
-        public IActionResult Add()
+        public IActionResult Create(int forumId)
         {
-            return View();
+            var model = new NewPostModel();
+            return View(model);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int postId)
         {
-            return View();
+            var post = _postService.GetById(postId);
+
+            var model = new NewPostModel
+            {
+                Title = post.Title,
+                Content = post.Content,
+                Created = post.Created,
+                ForumName = post.Forum.Name
+            };
+
+            return View(model);
         }
 
         public IActionResult Delete()

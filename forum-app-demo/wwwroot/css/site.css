@@ -153,8 +153,13 @@
     font-size: 0.9em;
 }
 
-/*Register*/
+/*Post*/
+.createPostSection{
+    background-color: #fff;
+    padding: 24px;
+}
 
+/*Register*/
 #registerContent{
     background-color: white;
     height: auto;

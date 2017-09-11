@@ -13,10 +13,31 @@
                 }
             </p>
         </div>
-        @if (Context.User.Identity.IsAuthenticated)
-        {
-            <div class="createPost">
-            </div>
-        }
     </div>
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="createPostSection">
+                <form asp-route-returnUrl="Forum" method="post" id="addPostForm">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content"></label>
+                        <input asp-for="Content" class="form-control" />
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ForumName"></label>
+                        <input asp-for="ForumName" class="form-control" />
+                        <span asp-validation-for="ForumName" class="text-danger"></span>
+                    </div>
+                    <button type="submit" id="registerBtn" class="btn btn-lg btn-info">Submit Post</button>
+                </form>
+            </div>
+        </div>
+    }
 </div>

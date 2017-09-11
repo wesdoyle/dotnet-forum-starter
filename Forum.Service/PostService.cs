@@ -37,14 +37,17 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task EditPostContent(int id, string content)
+        public async Task EditPostContent(int id, string content)
         {
-            throw new NotImplementedException();
+            var post = GetById(id);
+            post.Content = content;
+            _context.Posts.Update(post);
+            await _context.SaveChangesAsync();
         }
 
         public Post GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Posts.Find(id);
         }
 
         public IEnumerable<Post> GetPostsBetween(DateTime start, DateTime end)

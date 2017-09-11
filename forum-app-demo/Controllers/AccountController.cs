@@ -202,7 +202,7 @@ namespace forum_app_demo.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
+        public IActionResult Register(string returnUrl = "Forum")
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
