@@ -48,7 +48,22 @@ namespace Forum.Service
 
         public IEnumerable<ApplicationUser> GetAllUsers(IEnumerable<Post> posts)
         {
-            throw new NotImplementedException();
+            var users = new List<ApplicationUser>();
+
+            foreach(var post in posts)
+            {
+                users.Add(post.User);
+
+                if (post.Replies.Any())
+                {
+                    foreach(var reply in post.Replies)
+                    {
+                        users.Add(reply.User);
+                    }
+                }
+            }
+
+            return users.Distinct();
         }
 
         public Post GetById(int id)
