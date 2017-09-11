@@ -46,6 +46,11 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
+        public IEnumerable<ApplicationUser> GetAllUsers(IEnumerable<Post> posts)
+        {
+            throw new NotImplementedException();
+        }
+
         public Post GetById(int id)
         {
             return _context.Posts.Find(id);

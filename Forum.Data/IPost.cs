@@ -18,5 +18,6 @@ namespace Forum.Data
         IEnumerable<Post> GetPostsByUserId(int id);
         IEnumerable<Post> GetPostsByForumId(int id);
         IEnumerable<Post> GetPostsBetween(DateTime start, DateTime end);
+        IEnumerable<ApplicationUser> GetAllUsers(IEnumerable<Post> posts);
     }
 }

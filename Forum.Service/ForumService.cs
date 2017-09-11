@@ -11,10 +11,12 @@ namespace Forum.Service
     public class ForumService : IForum
     {
         private ApplicationDbContext _context;
+        private IPost _postService;
 
-        public ForumService(ApplicationDbContext context)
+        public ForumService(ApplicationDbContext context, IPost postService)
         {
             _context = context;
+            _postService = postService;
         }
 
         public async Task Create(Data.Models.Forum forum)
@@ -32,28 +34,20 @@ namespace Forum.Service
 
         public IEnumerable<ApplicationUser> GetActiveUsers(int forumId)
         {
-            var forum = GetById(forumId);
+            var posts = GetById(forumId).Posts;
 
-            var activeUsers = new List<ApplicationUser>();
-            var postingUsers = forum.Posts?.Select(p => p.User).Distinct() ?? new List<ApplicationUser>();
-            var replyingUsers = forum.Posts?.SelectMany(p => p.Replies).Select(r => r.User).Distinct() ?? new List<ApplicationUser>();
-
-            if(postingUsers != null && postingUsers.Any())
+            if(posts == null || !posts.Any())
             {
-                activeUsers.AddRange(postingUsers);
+                return new List<ApplicationUser>();
             }
 
-            if(replyingUsers != null && replyingUsers.Any())
-            {
-                activeUsers.AddRange(replyingUsers);
-            }
-
-            return activeUsers.Distinct();
+            return _postService.GetAllUsers(posts);
         }
 
         public IEnumerable<Data.Models.Forum> GetAll()
         {
-            return _context.Forums;
+            return _context.Forums
+                .Include(forum=>forum.Posts);
         }
 
         public Data.Models.Forum GetById(int id)

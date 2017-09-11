@@ -1,8 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #fafafa;
-    background-image: url("/images/mts2.png");
+    background-color: #eee;
     background-attachment: fixed;
 }
 
@@ -57,20 +56,31 @@
 }
 
 .frontPageImage{
-    height:500px;
-    background-image: url("../images/theme/smile.jpg");
+    height:410px;
+    background-image: url("../images/theme/lookout.png");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .frontPageLearn{
-
+    font-family: 'Roboto';
+    padding: 12px 0 0 32px;
 }
 
 .sectionDescription {
     color: #eee;
 }
+
+.frontPageHeading{
+    font-size: 3.2em;
+    margin: 16px 0;
+}
+
+.frontPageSubHeading{
+    font-size: 2em;
+}
+
 
 .frontPageTopContainer {
     padding: 40px 80px 42px 40px;
