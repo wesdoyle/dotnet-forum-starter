@@ -169,12 +169,6 @@
     background-color: white;
 }
 
-.register{
-    padding: 48px 0 0 72px;
-    font-size: 1.2em;
-    font-family: 'Roboto'
-}
-
 .noPosts{
     text-align: center;
     padding-top: 30px;
@@ -188,10 +182,30 @@
 }
 
 /*Register*/
-#registerContent{
+#registerContent, #signInContent{
     background-color: white;
-    height: auto;
+    min-height: 600px;
     padding: 16px 0 24px 40px;
+}
+
+#signInFormWrapper{
+    background-color: #fff;
+    padding: 16px 0 24px 0;
+    margin: auto;
+    width: 60%;
+}
+
+#registerFormWrapper{
+    background-color: #fff;
+    padding: 16px 0 24px 0;
+    margin: auto;
+    width: 60%;
+}
+
+.register{
+    padding: 48px 0 0 72px;
+    font-size: 1.2em;
+    font-family: 'Roboto'
 }
 
 #registerForm {
