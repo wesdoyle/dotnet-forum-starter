@@ -10,11 +10,7 @@
         </div>
     </div>
     <div class="row" id="registerContent">
-        <div class="col-md-3">
-            <div id="registerImage">
-            </div>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-7">
             <div id="registerFormWrapper">
                 <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" id="registerForm">
                     <div asp-validation-summary="All" class="text-danger"></div>
@@ -40,6 +36,10 @@
                     </div>
                     <button type="submit" id="registerBtn" class="btn btn-lg btn-success">Register</button>
                 </form>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div id="registerImage">
             </div>
         </div>
     </div>

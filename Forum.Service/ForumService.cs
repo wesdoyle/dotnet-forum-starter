@@ -38,12 +38,12 @@ namespace Forum.Service
             var postingUsers = forum.Posts?.Select(p => p.User).Distinct() ?? new List<ApplicationUser>();
             var replyingUsers = forum.Posts?.SelectMany(p => p.Replies).Select(r => r.User).Distinct() ?? new List<ApplicationUser>();
 
-            if(postingUsers != null)
+            if(postingUsers != null && postingUsers.Any())
             {
                 activeUsers.AddRange(postingUsers);
             }
 
-            if(replyingUsers != null)
+            if(replyingUsers != null && replyingUsers.Any())
             {
                 activeUsers.AddRange(replyingUsers);
             }

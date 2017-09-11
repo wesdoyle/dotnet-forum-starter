@@ -52,26 +52,53 @@
     margin-bottom: 8px;
 }
 
+.sectionInfo{
+    background-color: white;
+}
+
+.frontPageImage{
+    height:500px;
+    background-image: url("../images/theme/smile.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.frontPageLearn{
+
+}
+
 .sectionDescription {
     color: #eee;
 }
 
 .frontPageTopContainer {
-    padding: 50px 80px 80px 60px;
+    padding: 40px 80px 42px 40px;
     border: 1px solid #999;
-    background-color: rgba(1, 87, 155, 0.9);
-    border-bottom: 1px solid black;
+    background-color: #2569d5;
     font-family: 'Roboto';
-    background: rgb(29,144,209); /* Old browsers */
-    background: -moz-linear-gradient(left, rgba(29,144,209,1) 0%, rgba(4,47,103,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(29,144,209,1) 0%,rgba(4,47,103,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(29,144,209,1) 0%,rgba(4,47,103,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /*background: rgb(29,144,209); /* Old browsers */
+    /*background: -moz-linear-gradient(left, rgba(29,144,209,1) 0%, rgba(4,47,103,1) 100%);*/
+    /*background: -webkit-linear-gradient(left, rgba(29,144,209,1) 0%,rgba(4,47,103,1) 100%);*/
+    /*background: linear-gradient(to right, rgba(29,144,209,1) 0%,rgba(4,47,103,1) 100%);*/*/
 }
 
 .frontPageTopContainer > h1 {
     font-size: 1.8em;
     color: #fff;
     padding: 9px;
+}
+
+#welcomeMessage{
+    color: white;
+    font-size: 1.5em;
+    font-family: 'Roboto';
+}
+
+#welcomeSub{
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Roboto';
 }
 
 .frontPageTopContainer > h2 {
@@ -85,7 +112,8 @@
 }
 
 #latestPosts{
-    font-size: 1.5em;
+    font-size: 1.2em;
+    font-weight: bold;
     color: #333;
     margin: 4px 0 16px 0;
 }
@@ -209,6 +237,22 @@
 }
 
 #registerForm {
+}
+
+#registerImage{
+    height:500px;
+    background-image: url("../images/theme/jump.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#signInImage{
+    height:500px;
+    background-image: url("../images/theme/lookout.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #registerBtn {
