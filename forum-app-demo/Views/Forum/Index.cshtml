@@ -5,7 +5,13 @@
         <div class="sectionHeading">Browse Forums</div>
         <div class="sectionDescription">
             <p>Welcome to <strong>Lambda Forums community</strong>. Posts are broadly categorized into separate forums by programming language or area of interest.</p>
-            <p>Please read the Forum Guidelines before creating a new post. You must be a registered member to create a new post.</p>
+            <p>
+                Please read the Forum Guidelines before creating a new post.
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    <span>You must be a <a asp-controller="Account" asp-action="Register">registered member</a> to create a new post.</span>
+                }
+            </p>
         </div>
     </div>
     <div class="row" id="forumIndexContent">
@@ -18,7 +24,7 @@
                             <div class="forumLogo" style="background-image: url(@forum.ImageUrl); background-size:100%"></div>
                             <div class="forumData">
                                 <div class="forumTitle">
-                                    @forum.Name
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route="@forum.Id">@forum.Name</a>
                                 </div>
                                 <div class="forumSubTitle">
                                     @if (forum.LatestPost.Author != "")
@@ -28,7 +34,7 @@
 
                                     else
                                     {
-                                        <span>No posts yet!</span>
+                                        <span>No posts</span>
                                     }
                                 </div>
                             </div>
