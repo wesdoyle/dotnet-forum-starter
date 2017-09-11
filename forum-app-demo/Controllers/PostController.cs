@@ -1,8 +1,11 @@
 ﻿using Forum.Data;
 using Forum.Data.Models;
 using Forum.Web.Models.Post;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Forum.Web.Controllers
 {
@@ -11,40 +14,52 @@ namespace Forum.Web.Controllers
         private IPost _postService;
         private IForum _forumService;
         private IApplicationUser _userService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public PostController(IPost postService, IForum forumService, IApplicationUser userService)
+        public PostController(IPost postService, IForum forumService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
             _forumService = forumService;
             _userService = userService;
+            _userManager = userManager;
         }
 
         public IActionResult Create(int forumId)
         {
             var forum = _forumService.GetById(forumId);
-            var user = User.Identity.Name;
 
             var model = new NewPostModel
             {
-                ForumName = forum.Title
+                ForumName = forum.Title,
+                ForumId = forum.Id
             };
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResults AddPost(NewPostModel model)
+        public async Task<IActionResult> AddPost(NewPostModel model)
         {
-            var post = BuildPost(model);
-
-            _postService.Add(post);
+            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.FindByIdAsync(userId);
+            var post = BuildPost(model, user);
+            await _postService.Add(post);
+            return RedirectToAction("Forum", "Index");
         }
 
         public Post BuildPost(NewPostModel post, ApplicationUser user)
         {
+            var now = DateTime.Now;
+            var forum = _forumService.GetById(post.ForumId);
+
             return new Post
             {
                 Title = post.Title,
+                Content = post.Content,
+                Created = now,
+                Forum = forum,
+                User = user,
+                IsArchived = false
             };
         }
 
