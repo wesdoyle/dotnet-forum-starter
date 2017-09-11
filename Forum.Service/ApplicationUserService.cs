@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using forum_app_demo.Data;
 using Forum.Data.Models;
+using System.Linq;
 
 namespace Forum.Service
 {
@@ -25,9 +26,14 @@ namespace Forum.Service
             throw new NotImplementedException();
         }
 
-        public ApplicationUser GetById(int id)
+        public ApplicationUser GetByName(string name)
         {
-            throw new NotImplementedException();
+            return _context.ApplicationUsers.FirstOrDefault(user => user.UserName == name);
+        }
+
+        public ApplicationUser GetById(string id)
+        {
+            return _context.ApplicationUsers.FirstOrDefault(user => user.Id == id);
         }
     }
 }

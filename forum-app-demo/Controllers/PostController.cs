@@ -1,6 +1,8 @@
 ﻿using Forum.Data;
+using Forum.Data.Models;
 using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Forum.Web.Controllers
 {
@@ -8,22 +10,42 @@ namespace Forum.Web.Controllers
     {
         private IPost _postService;
         private IForum _forumService;
+        private IApplicationUser _userService;
 
-        public PostController(IPost postService, IForum forumService)
+        public PostController(IPost postService, IForum forumService, IApplicationUser userService)
         {
             _postService = postService;
             _forumService = forumService;
+            _userService = userService;
         }
 
         public IActionResult Create(int forumId)
         {
             var forum = _forumService.GetById(forumId);
+            var user = User.Identity.Name;
+
             var model = new NewPostModel
             {
                 ForumName = forum.Title
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResults AddPost(NewPostModel model)
+        {
+            var post = BuildPost(model);
+
+            _postService.Add(post);
+        }
+
+        public Post BuildPost(NewPostModel post, ApplicationUser user)
+        {
+            return new Post
+            {
+                Title = post.Title,
+            };
         }
 
         public IActionResult Edit(int postId)
