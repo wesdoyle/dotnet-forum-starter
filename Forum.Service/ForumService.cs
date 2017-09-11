@@ -34,8 +34,8 @@ namespace Forum.Service
             var forum = GetById(forumId);
 
             var activeUsers = new List<ApplicationUser>();
-            var postingUsers = forum.Posts.Select(p => p.User).Distinct();
-            var replyingUsers = forum.Posts.SelectMany(p => p.Replies).Select(r => r.User).Distinct();
+            var postingUsers = forum.Posts?.Select(p => p.User).Distinct() ?? new List<ApplicationUser>();
+            var replyingUsers = forum.Posts?.SelectMany(p => p.Replies).Select(r => r.User).Distinct() ?? new List<ApplicationUser>();
 
             activeUsers.AddRange(postingUsers);
             activeUsers.AddRange(replyingUsers);
