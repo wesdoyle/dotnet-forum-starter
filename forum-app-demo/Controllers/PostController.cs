@@ -20,8 +20,9 @@ namespace Forum.Web.Controllers
             var forum = _forumService.GetById(forumId);
             var model = new NewPostModel
             {
-                ForumName = forum.Title;
+                ForumName = forum.Title
             };
+
             return View(model);
         }
 
