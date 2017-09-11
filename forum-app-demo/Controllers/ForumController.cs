@@ -4,7 +4,6 @@ using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,6 +60,37 @@ namespace forum_app_demo.Controllers
                 Rating = appUser.Rating,
                 Username = appUser.UserName
             });
+        }
+
+        public IActionResult Topic(int id)
+        {
+            var forum = _forumService.GetById(id);
+
+            var allPosts = forum.Posts.Select(post => new ForumListingPostModel
+            {
+                Author = post.User.UserName,
+                Title = post.Title,
+                DatePosted = post.Created.ToString(),
+                RepliesCount = post.Replies.Count()
+            });
+
+            var latestPost = allPosts
+                .OrderByDescending(post => post.DatePosted)
+                .FirstOrDefault();
+
+            var model = new ForumListingModel
+            {
+                Id = id,
+                Name = forum.Title,
+                Description = forum.Description,
+                AllPosts = allPosts,
+                ImageUrl = forum.ImageUrl,
+                LatestPost = latestPost,
+                NumberOfPosts = allPosts.Count(),
+                NumberOfUsers = _forumService.GetActiveUsers(id).Count()
+            };
+
+            return View(model);
         }
 
         public IActionResult Add()
