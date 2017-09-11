@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using forum_app_demo.Models;
 using forum_app_demo.Models.ManageViewModels;
 using forum_app_demo.Services;
+using Forum.Data.Models;
 
 namespace forum_app_demo.Controllers
 {

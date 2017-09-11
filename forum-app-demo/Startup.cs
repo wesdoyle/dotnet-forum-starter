@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using forum_app_demo.Data;
-using forum_app_demo.Models;
 using forum_app_demo.Services;
 using Forum.Data;
 using Forum.Service;
+using Forum.Data.Models;
 
 namespace forum_app_demo
 {
