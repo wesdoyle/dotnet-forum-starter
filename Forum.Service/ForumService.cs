@@ -50,7 +50,14 @@ namespace Forum.Service
 
         public Data.Models.Forum GetById(int id)
         {
-            return _context.Forums.Find(id);
+            var forum = _context.Forums.Find(id);
+
+            if(forum.Posts == null)
+            {
+                forum.Posts = new List<Post>();
+            }
+
+            return forum;
         }
 
         public Post GetLatestPost(int forumId)

@@ -44,12 +44,17 @@ namespace forum_app_demo.Controllers
         {
             var post = _forumService.GetLatestPost(forumId);
 
-            return new ForumListingPostModel
+            if(post != null)
             {
-                Author = post.User != null ? post.User.UserName : "",
-                DatePosted = post.Created != null ? post.Created.ToString() : "",
-                Title = post.Title ?? ""
-            };
+                return new ForumListingPostModel
+                {
+                    Author = post.User != null ? post.User.UserName : "",
+                    DatePosted = post.Created != null ? post.Created.ToString() : "",
+                    Title = post.Title ?? ""
+                };
+            }
+
+            return new ForumListingPostModel();
         }
 
         public IEnumerable<ApplicationUserModel> GetActiveUsers(int forumId)
