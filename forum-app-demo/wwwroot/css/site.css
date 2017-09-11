@@ -6,6 +6,18 @@
     background-attachment: fixed;
 }
 
+.material-icons.md-48 {
+    font-size: 48px !important;
+    height: 48px !important;
+    width: 48px !important;
+}
+
+.material-icons.md-72 {
+    font-size: 72px !important;
+    height: 72px !important;
+    width: 72px !important;
+}
+
 .navLogo{
     background-image: url("/images/app-logo-s.png");
     background-size: 100%;
@@ -114,7 +126,6 @@
     display: inline-block;
 }
 
-
 .forumTitle {
     font-family: 'Roboto';
     font-weight: bold;
@@ -151,6 +162,23 @@
     color: #888;
     font-family: 'Roboto Mono';
     font-size: 0.9em;
+}
+
+#forumIndexContent{
+    padding-bottom: 60px;
+    background-color: white;
+}
+
+.register{
+    padding: 48px 0 0 72px;
+    font-size: 1.2em;
+    font-family: 'Roboto'
+}
+
+.noPosts{
+    text-align: center;
+    padding-top: 30px;
+    font-family: 'Roboto Mono'
 }
 
 /*Post*/

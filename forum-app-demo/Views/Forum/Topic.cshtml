@@ -2,8 +2,9 @@
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <div class="sectionHeading">@Model.Name</div>
+        <div class="sectionHeading">@Model.Name Forum</div>
         <div class="sectionDescription">
+        <div class="forumLogo" style="background-image: url(@Model.ImageUrl); background-size:100%"></div>
             <p>Welcome to the <strong>@Model.Name</strong> forum. Please keep posts friendly and on-topic.</p>
             <p>
                 Please read the Forum Guidelines before creating a new post.
@@ -42,10 +43,13 @@
                 </tbody>
             </table>
         }
-
         else
         {
-            <h3>There are no posts yet. Why not <a asp-controller="Post" asp-action="Create"><span>create one?</span></a></h3>
+            <div class="noPosts">
+                <i class="material-icons md-72">question_answer</i>
+                <h3>Looks like there are no @Model.Name posts yet. <br />
+                Why not <a asp-controller="Post" asp-action="Create" asp-route-forumId="@Model.Id"><span>Create One?</span></a></h3>
+            </div>
         }
     </div>
 </div>

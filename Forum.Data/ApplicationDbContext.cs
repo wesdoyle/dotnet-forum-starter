@@ -18,6 +18,7 @@ namespace forum_app_demo.Data
         public DbSet<PrivateMessage> PrivateMessages { get; set; }
         public DbSet<FeatureType> FeatureTypes { get; set; }
         public DbSet<UserFeature> UserFeatures { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

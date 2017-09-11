@@ -1,7 +1,5 @@
 ﻿using Forum.Data;
-using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.Web.Controllers
@@ -9,20 +7,24 @@ namespace Forum.Web.Controllers
     public class PostController : Controller
     {
         private IPost _postService;
+        private IForum _forumService;
 
-        public PostController(IPost postService)
+        public PostController(IPost postService, IForum forumService)
         {
             _postService = postService;
+            _forumService = forumService;
         }
 
-        [Authorize]
         public IActionResult Create(int forumId)
         {
-            var model = new NewPostModel();
+            var forum = _forumService.GetById(forumId);
+            var model = new NewPostModel
+            {
+                ForumName = forum.Title;
+            };
             return View(model);
         }
 
-        [Authorize]
         public IActionResult Edit(int postId)
         {
             var post = _postService.GetById(postId);
@@ -37,7 +39,6 @@ namespace Forum.Web.Controllers
             return View(model);
         }
 
-        [Authorize]
         public IActionResult Delete(int id)
         {
             var post = _postService.GetById(id);
@@ -52,7 +53,6 @@ namespace Forum.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult ConfirmDelete(int id)
         {
             var post = _postService.GetById(id);
