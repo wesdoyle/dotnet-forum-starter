@@ -27,7 +27,7 @@
                                     <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">@forum.Name</a>
                                 </div>
                                 <div class="forumSubTitle">
-                                    @if (forum.LatestPost.Author != "")
+                                    @if (forum.AllPosts != null)
                                     {
                                         <div>Latest Post: <span class="postTitle">@forum.LatestPost.Title</span> by <span class="postUser">@forum.LatestPost.Author</span> on <span class="postDate">@forum.LatestPost.DatePosted</span></div>
                                     }
