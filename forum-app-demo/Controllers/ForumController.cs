@@ -23,6 +23,7 @@ namespace forum_app_demo.Controllers
         {
             var forums = _forumService.GetAll().Select(f => new ForumListingModel
             {
+                Id = f.Id,
                 Name = f.Title,
                 Description = f.Description,
                 NumberOfPosts = f.Posts?.Count() ?? 0,

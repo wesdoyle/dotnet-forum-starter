@@ -24,7 +24,7 @@
                             <div class="forumLogo" style="background-image: url(@forum.ImageUrl); background-size:100%"></div>
                             <div class="forumData">
                                 <div class="forumTitle">
-                                    <a asp-controller="Forum" asp-action="Topic" asp-route="@forum.Id">@forum.Name</a>
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">@forum.Name</a>
                                 </div>
                                 <div class="forumSubTitle">
                                     @if (forum.LatestPost.Author != "")
