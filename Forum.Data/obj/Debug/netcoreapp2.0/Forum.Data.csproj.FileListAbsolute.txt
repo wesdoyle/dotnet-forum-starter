@@ -6,3 +6,4 @@ C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Debug\netcorea
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Debug\netcoreapp2.0\Forum.Data.AssemblyInfo.cs
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Debug\netcoreapp2.0\Forum.Data.dll
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Debug\netcoreapp2.0\Forum.Data.pdb
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Debug\netcoreapp2.0\Forum.Data.csprojResolveAssemblyReference.cache
