@@ -68,7 +68,6 @@
 
 .postLogo {
     border-radius: 3px;
-    display: inline-block;
     float:left;
     margin-right: 20px;
     height: 40px;
@@ -95,7 +94,6 @@
 
 .forumLogo {
     border-radius: 3px;
-    display: inline-block;
     float:left;
     margin-right: 20px;
     height: 40px;

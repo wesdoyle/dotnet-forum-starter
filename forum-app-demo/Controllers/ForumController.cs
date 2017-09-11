@@ -3,6 +3,7 @@ using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace forum_app_demo.Controllers
                 Description = f.Description,
                 NumberOfPosts = f.Posts.Count(),
                 LatestPost = GetLatestPost(f.Id),
-                NumberOfUsers = GetActiveUsers(f.Id).Count()
+                NumberOfUsers = _forumService.GetActiveUsers(f.Id).Count()
             });
 
             var model = new ForumIndexModel
@@ -51,7 +52,12 @@ namespace forum_app_demo.Controllers
 
         public IEnumerable<ApplicationUserModel> GetActiveUsers(int forumId)
         {
-            var user = _forumService.GetActiveUsers(forumId);
+            return _forumService.GetActiveUsers(forumId).Select(appUser => new ApplicationUserModel {
+                Id = Convert.ToInt32(appUser.Id),
+                ProfileImageUrl = appUser.ProfileImageUrl,
+                Rating = appUser.Rating,
+                Username = appUser.UserName
+            });
         }
 
         public IActionResult Add()
