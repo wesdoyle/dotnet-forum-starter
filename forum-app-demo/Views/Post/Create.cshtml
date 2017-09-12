@@ -3,10 +3,6 @@
 <div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">New Post | @Model.ForumName</div>
-        <div class="sectionDescription">
-            <p>
-            </p>
-        </div>
     </div>
     @if (!Context.User.Identity.IsAuthenticated)
     {
@@ -20,6 +16,9 @@
     {
         <div class="row">
             <div class="createPostSection">
+                <div class="authorBlock">
+                    You're submitting this post as <span class="authorBlockName">@Model.AuthorName</span>
+                </div>
                 <form asp-action="AddPost" method="post" id="addPostForm">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group">
@@ -28,11 +27,11 @@
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Content"></label>
-                        <input asp-for="Content" class="form-control" />
+                        <label asp-for="Content">Post Content</label>
+                        <textarea asp-for="Content" rows="20" class="form-control" placeholder="Write your post here."></textarea>
                         <span asp-validation-for="Content" class="text-danger"></span>
                     </div>
-                    <button type="submit" id="registerBtn" class="btn btn-lg btn-info">Submit Post</button>
+                    <button type="submit" id="registerBtn" class="btn btn-submitPost">Submit Post</button>
                     <input asp-for="UserId" type="hidden" />
                     <input asp-for="ForumName" type="hidden" />
                     <input asp-for="ForumId" type="hidden" />

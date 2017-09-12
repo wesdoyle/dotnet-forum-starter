@@ -47,7 +47,7 @@
     font-size: 1.3em;
     font-family: 'Roboto';
     padding: 16px 0 32px 0;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #335;
     margin-bottom: 12px;
 }
 
@@ -309,3 +309,16 @@
     background-color: #e53935 !important;
     color: #fff !important;
 }
+
+.btn-submitPost {
+    background-color: #00695C !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+    .btn-submitPost:hover {
+        transition: ease-in 0.1s;
+        background-color: #00897B !important;
+        color: #fff !important;
+    }
