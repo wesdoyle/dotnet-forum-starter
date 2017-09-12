@@ -13,9 +13,8 @@ namespace Forum.Service
             Configuration = configuration;
         }
 
-        public CloudBlobContainer GetBlobContainer()
+        public CloudBlobContainer GetBlobContainer(string connectionString)
         {
-            var connectionString = Configuration["AzureStorageAccountConnectionString"];
             var storageAccount = CloudStorageAccount.Parse(connectionString);
             var blobClient = storageAccount.CreateCloudBlobClient();
             return blobClient.GetContainerReference("staticcontent");

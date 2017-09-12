@@ -474,3 +474,7 @@
     background-color: #039BE5;
     transition: ease 0.3s;
 }
+
+#btn-profile{
+    margin-top: 10px;
+}

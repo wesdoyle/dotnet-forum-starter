@@ -16,9 +16,10 @@
                     <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="Post">
                         <div id="upload">
                             <label class="btn btn-default btn-file">
-                                Browse <input type="file" asp-for="ImageUpload" style="display: none;">
+                                Browse <input type="file" name="file" style="display: none;">
                             </label>
                         </div>
+                        <button type="submit" id="btn-profile" class="btn btn-default">Submit</button>
                     </form>
                 }
             </div>

@@ -4,6 +4,6 @@ namespace Forum.Service
 {
     public interface IUpload
     {
-        CloudBlobContainer GetBlobContainer();
+        CloudBlobContainer GetBlobContainer(string connectionString);
     }
 }

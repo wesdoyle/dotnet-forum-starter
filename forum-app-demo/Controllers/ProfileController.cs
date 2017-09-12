@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Forum.Service;
+using Microsoft.Extensions.Configuration;
 
 namespace Forum.Web.Controllers
 {
@@ -16,12 +17,14 @@ namespace Forum.Web.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private IApplicationUser _userService;
         private IUpload _uploadService;
+        private readonly IConfiguration _configuration;
 
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService)
+        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService, IConfiguration configuration)
         {
             _userManager = userManager;
             _userService = userService;
             _uploadService = uploadService;
+            _configuration = configuration;
         }
 
         public IActionResult Detail(string id)
@@ -50,24 +53,13 @@ namespace Forum.Web.Controllers
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> Post(IFormFile file)
         {
-            //// full path to file in temp location
-            //var filePath = Path.GetTempFileName();
-
-            //if (file.Length > 0)
-            //{
-            //    using (var stream = new FileStream(filePath, FileMode.Create))
-            //    {
-            //        await file.CopyToAsync(stream);
-            //    }
-            //}
-
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
             var userId = _userManager.GetUserId(User);
-            var container = _uploadService.GetBlobContainer();
+            var connectionString = _configuration.GetConnectionString("DefaultBlobStorage");
+            var container = _uploadService.GetBlobContainer(connectionString);
 
             var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
+
             var blockBlob = container.GetBlockBlobReference(filename);
 
             await blockBlob.UploadFromStreamAsync(file.OpenReadStream());

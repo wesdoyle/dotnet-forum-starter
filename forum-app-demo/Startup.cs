@@ -41,6 +41,7 @@ namespace forum_app_demo
             services.AddScoped<IApplicationUser, ApplicationUserService>();
 
             services.AddSingleton<IUpload, UploadService>();
+            services.AddSingleton(Configuration);
             services.AddMvc();
         }
 
