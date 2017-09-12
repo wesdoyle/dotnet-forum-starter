@@ -5,6 +5,9 @@ using Forum.Web.Models.ApplicationUser;
 using Forum.Data;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Forum.Service;
 
 namespace Forum.Web.Controllers
 {
@@ -12,11 +15,13 @@ namespace Forum.Web.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private IApplicationUser _userService;
+        private UploadService _uploadService;
 
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService)
+        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, UploadService uploadService)
         {
             _userManager = userManager;
             _userService = userService;
+            _uploadService = uploadService;
         }
 
         public IActionResult Detail(string id)
@@ -36,27 +41,35 @@ namespace Forum.Web.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult UploadImage(ProfileModel model)
-        {
-            var filename = ContentDispositionHeaderValue
-                                    .Parse(model.ImageUpload.ContentDisposition)
-                                    .FileName
-                                    .Trim('"');
-            filename = Path.Combine("/Content/UserProfile/", $@"\{filename}");
+        /*
+         * Files uploaded using the IFormFile technique are buffered in memory or on disk on the web server 
+         * before being processed. Inside the action method, the IFormFile contents are accessible as a stream. 
+         * In addition to the local file system, files can be streamed to Azure Blob storage or Entity Framework.
+         */
 
-            if (Directory.Exists("/Content/UserProfile/"))
+        [HttpPost("UploadFiles")]
+        public async Task<IActionResult> Post(IFormFile file)
+        {
+            // full path to file in temp location
+            var filePath = Path.GetTempFileName();
+
+            if (file.Length > 0)
             {
-                using (FileStream fs = System.IO.File.Create(filename))
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    model.ImageUpload.CopyTo(fs);
-                    fs.Flush();
+                    await file.CopyToAsync(stream);
                 }
             }
 
-            model.ProfileImageUrl = "~/Content/UserImages/" + model.ImageUpload.FileName;
+            // process uploaded files
+            // Don't rely on or trust the FileName property without validation.
 
-            return View();
+            var container = _uploadService.GetBlobContainer();
+            var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+            var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
+            var blockBlob = container.GetBlockBlobReference(filename);
+            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+            return Ok(new { filePath });
         }
     }
 }
