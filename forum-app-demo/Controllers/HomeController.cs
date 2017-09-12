@@ -12,9 +12,9 @@ namespace forum_app_demo.Controllers
     {
         private IPost _postService;
 
-        protected HomeController(IPost postService)
+        public HomeController(IPost postService)
         {
-            _postService= postService;
+            _postService = postService;
         }
 
         public IActionResult Index()
