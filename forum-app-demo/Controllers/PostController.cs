@@ -33,7 +33,8 @@ namespace Forum.Web.Controllers
             {
                 ForumName = forum.Title,
                 ForumId = forum.Id,
-                AuthorName = User.Identity.Name
+                AuthorName = User.Identity.Name,
+                ForumImageUrl = _forumService.GetById(forum.Id).ImageUrl
             };
 
             return View(model);

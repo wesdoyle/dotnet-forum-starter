@@ -292,7 +292,7 @@
     line-height: 1.4;
 }
 
-#newPostBtn{
+#headingBtn{
     margin-right: 20px;
     float: right;
 }
@@ -330,4 +330,17 @@
 
 .authorBlockName{
     font-weight: bold;
+}
+
+.btn-back{
+    background-color: #00695C !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-back:hover {
+    transition: ease-in 0.1s;
+    background-color: #00897B !important;
+    color: #fff !important;
 }
