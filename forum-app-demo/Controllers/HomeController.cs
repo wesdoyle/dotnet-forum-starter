@@ -32,6 +32,7 @@ namespace forum_app_demo.Controllers
                 Id = post.Id,
                 Title = post.Title,
                 Author = post.User.UserName,
+                AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = _postService.GetReplyCount(post.Id),

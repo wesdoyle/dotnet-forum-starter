@@ -77,6 +77,7 @@ namespace forum_app_demo.Controllers
             {
                 Id = post.Id,
                 Author = post.User.UserName,
+                AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),

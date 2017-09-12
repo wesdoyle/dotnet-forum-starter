@@ -26,7 +26,7 @@
                                 @post.Title
                             </div>
                             <div class="postSubTitle">
-                                posted by <span class="postUser">@post.Author</span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
+                                posted by <span class="postUser"><a asp-controller="ViewProfile" asp-action="View" asp-route-id="@post.AuthorId">@post.Author</a></span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
                             </div>
                         </td>
                         <td></td>

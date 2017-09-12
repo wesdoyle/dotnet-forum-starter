@@ -35,7 +35,17 @@
                                         <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">@post.Title</a>
                                     </div>
                                     <div class="forumSubTitle">
-                                        <div><span class="postAuthor">@post.Author</span> (@post.AuthorRating) on <span class="postDate">@post.DatePosted</span></div>
+                                        <div>
+                                            <span class="postAuthor">
+                                                <a asp-controller="ViewProfile" asp-action="View" asp-route-id="@post.AuthorId">
+                                                    @post.Author
+                                                </a>
+                                            </span>
+                                            (@post.AuthorRating) on
+                                            <span class="postDate">
+                                                @post.DatePosted
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </td>
