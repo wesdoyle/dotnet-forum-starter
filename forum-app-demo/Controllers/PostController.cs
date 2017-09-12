@@ -50,7 +50,9 @@ namespace Forum.Web.Controllers
             return post.Replies.Select(reply => new PostReplyModel
             {
                 Id = reply.Id,
-                Author = reply.User.UserName,
+                AuthorName = reply.User.UserName,
+                AuthorId = reply.User.Id,
+                AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,
                 Date = reply.Created,
                 ReplyContent = reply.Content
@@ -67,7 +69,7 @@ namespace Forum.Web.Controllers
                 ForumName = forum.Title,
                 ForumId = forum.Id,
                 AuthorName = User.Identity.Name,
-                ForumImageUrl = _forumService.GetById(forum.Id).ImageUrl
+                ForumImageUrl = forum.ImageUrl
             };
 
             return View(model);
