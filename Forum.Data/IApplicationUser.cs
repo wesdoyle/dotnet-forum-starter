@@ -1,5 +1,6 @@
 ﻿using Forum.Data.Models;
 using System.Threading.Tasks;
+using System;
 
 namespace Forum.Data
 {
@@ -10,5 +11,6 @@ namespace Forum.Data
         Task IncrementRating(string id);
         Task Add(ApplicationUser user);
         Task Deactivate(ApplicationUser user);
+        Task SetProfileImage(Uri uri);
     }
 }

@@ -14,6 +14,7 @@ namespace forum_app_demo
 {
     public class Startup
     {
+        // This is a new Startup constructor.
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

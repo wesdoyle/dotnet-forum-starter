@@ -63,13 +63,20 @@ namespace Forum.Web.Controllers
 
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
-
             var container = _uploadService.GetBlobContainer();
             var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
             var blockBlob = container.GetBlockBlobReference(filename);
+
             await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
-            return Ok(new { filePath });
+            await _userService.SetProfileImage(blockBlob.Uri);
+
+            return Json(new
+            {
+                name = blockBlob.Name,
+                uri = blockBlob.Uri,
+                size = blockBlob.Properties.Length
+            });
         }
     }
 }

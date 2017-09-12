@@ -19,6 +19,18 @@ namespace forum_app_demo
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                // Add ConfigureAppConfiguration
+                /*
+                 * The function takes a single argument, which is a callback that 
+                 * takes a WebHostBuilderContext and an IConfigurationBuilder.
+                 */
+                .ConfigureAppConfiguration((builderContext, config) => {
+                    IHostingEnvironment env = builderContext.HostingEnvironment;
+                    config
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                    .AddJsonFile("azureSettings.json", optional: false, reloadOnChange: true);
+                })
                 .UseStartup<Startup>()
                 .Build();
     }
