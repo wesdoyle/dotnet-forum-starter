@@ -392,3 +392,28 @@
     color: #159;
     font-family: 'Roboto Mono';
 }
+
+.userProfile{
+    padding: 12px;
+    background-color: #fff;
+}
+
+#userProfileImage{
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    background-color: #ddd;
+}
+
+#userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating {
+    display: block;
+    color: #444;
+    font-family: 'Roboto';
+    padding: 8px;
+}
+
+#userBio{
+    display: block;
+    font-family: 'Roboto';
+    padding: 12px;
+}
