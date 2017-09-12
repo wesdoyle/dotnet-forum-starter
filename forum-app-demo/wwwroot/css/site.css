@@ -317,8 +317,17 @@
     border-radius: 0px !important;
 }
 
-    .btn-submitPost:hover {
-        transition: ease-in 0.1s;
-        background-color: #00897B !important;
-        color: #fff !important;
-    }
+.btn-submitPost:hover {
+    transition: ease-in 0.1s;
+    background-color: #00897B !important;
+    color: #fff !important;
+}
+
+.authorBlock{
+    padding: 18px;
+    border: 1px dashed #00AFCF;
+}
+
+.authorBlockName{
+    font-weight: bold;
+}

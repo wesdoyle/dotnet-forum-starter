@@ -32,7 +32,8 @@ namespace Forum.Web.Controllers
             var model = new NewPostModel
             {
                 ForumName = forum.Title,
-                ForumId = forum.Id
+                ForumId = forum.Id,
+                AuthorName = User.Identity.Name
             };
 
             return View(model);
