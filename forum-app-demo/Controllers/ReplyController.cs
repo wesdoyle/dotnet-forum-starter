@@ -34,7 +34,7 @@ namespace Forum.Web.Controllers
             {
                 PostContent = post.Content,
                 PostTitle = post.Title,
-                PostId = id.ToString(),
+                PostId = id,
 
                 ForumName = forum.Title,
                 ForumId = forum.Id,
@@ -70,9 +70,11 @@ namespace Forum.Web.Controllers
         private PostReply BuildReply(PostReplyModel reply, ApplicationUser user)
         {
             var now = DateTime.Now;
+            var post = _postService.GetById(reply.PostId);
 
             return new PostReply 
             {
+                Post = post,
                 Content = reply.ReplyContent,
                 Created = now,
                 User = user

@@ -24,15 +24,8 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddReply(int id)
+        public async Task AddReply(PostReply reply)
         {
-            var post = GetById(id);
-
-            var reply = new PostReply
-            {
-
-            };
-
             _context.PostReplies.Add(reply);
             await _context.SaveChangesAsync();
         }

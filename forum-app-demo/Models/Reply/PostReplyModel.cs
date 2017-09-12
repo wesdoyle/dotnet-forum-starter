@@ -14,7 +14,7 @@ namespace Forum.Web.Models.Reply
         public DateTime Date { get; set; }
         public string ReplyContent { get; set; }
 
-        public string PostId { get; set; }
+        public int PostId { get; set; }
         public string PostTitle { get; set; }
         public string PostContent { get; set; }
 
