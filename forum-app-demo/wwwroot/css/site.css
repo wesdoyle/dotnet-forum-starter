@@ -352,18 +352,25 @@
     font-family: 'Roboto Mono';
     padding: 2px 5px 2px 5px;
     border-radius: 1px;
+    text-align: center;
+    width: 30px;
 }
 
-.btn-reply {
+.btn-newReply {
     background-color: #5C6BC0! important;
     color: #fff !important;
     transition: ease-in 0.1s;
     border-radius: 0px !important;
 }
 
-.btn-reply:hover {
+.btn-newReply:hover {
     background-color: #9FA8DA !important;
     transition: ease-in 0.1s;
+}
+
+#replyRow {
+    background-color: #3F51B5;
+    padding: 8px;
 }
 
 .postAuthorContainer{
