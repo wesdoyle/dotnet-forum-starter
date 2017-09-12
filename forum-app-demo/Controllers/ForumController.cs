@@ -28,7 +28,8 @@ namespace forum_app_demo.Controllers
                 NumberOfPosts = f.Posts?.Count() ?? 0,
                 LatestPost = GetLatestPost(f.Id) ?? new ForumListingPostModel(),
                 NumberOfUsers = _forumService.GetActiveUsers(f.Id).Count(),
-                ImageUrl = f.ImageUrl
+                ImageUrl = f.ImageUrl,
+                HasRecentPost = _forumService.HasRecentPost(f.Id) 
             });
 
             var model = new ForumIndexModel

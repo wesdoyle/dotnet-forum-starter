@@ -14,5 +14,6 @@ namespace Forum.Data
         Task UpdateForumDescription(int id, string description);
         Post GetLatestPost(int forumId);
         IEnumerable<ApplicationUser> GetActiveUsers(int forumId);
+        bool HasRecentPost(int id);
     }
 }

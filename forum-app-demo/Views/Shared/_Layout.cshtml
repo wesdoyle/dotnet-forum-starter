@@ -29,7 +29,6 @@
                     <li class="active"><a asp-controller="Forum" asp-action="Index">Forums</a></li>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
-                        <li><a href="#">Favorites</a></li>
                         <li><a href="#">Messages</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>

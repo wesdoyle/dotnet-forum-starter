@@ -11,6 +11,7 @@ namespace Forum.Web.Models.Forum
         public int NumberOfPosts { get; set; }
         public int NumberOfUsers { get; set; }
         public string ImageUrl { get; set; }
+        public bool HasRecentPost { get; set; }
 
         public ForumListingPostModel LatestPost { get; set; }
         public IEnumerable<ForumListingPostModel> AllPosts { get; set; }

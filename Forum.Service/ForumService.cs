@@ -5,6 +5,7 @@ using Forum.Data.Models;
 using forum_app_demo.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Forum.Service
 {
@@ -81,6 +82,13 @@ namespace Forum.Service
             }
 
             return new Post();
+        }
+
+        public bool HasRecentPost(int id)
+        {
+            var hoursAgo = 12;
+            var window = DateTime.Now.AddHours(-hoursAgo);
+            return GetById(id).Posts.Where(post => post.Created >= window).Any();
         }
 
         public async Task UpdateForumDescription(int id, string description)

@@ -344,3 +344,11 @@
     background-color: #FFA726 !important;
     color: #fff !important;
 }
+
+.hasRecentPost {
+    font-size: 0.6em;
+    background-color: #FF7043;
+    font-family: 'Roboto Mono';
+    padding: 3px;
+    border-radius: 1px;
+}
