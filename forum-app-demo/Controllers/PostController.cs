@@ -1,9 +1,11 @@
 ﻿using Forum.Data;
 using Forum.Data.Models;
 using Forum.Web.Models.Post;
+using Forum.Web.Models.Reply;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,6 +24,37 @@ namespace Forum.Web.Controllers
             _forumService = forumService;
             _userService = userService;
             _userManager = userManager;
+        }
+
+        public IActionResult Index(int id)
+        {
+            var post = _postService.GetById(id);
+
+            var replies = GetPostReplies(post);
+
+            var model = new PostIndexModel {
+                Id = post.Id,
+                Title = post.Title,
+                Author = post.User.UserName,
+                Date = post.Created,
+                AuthorRating = post.User.Rating,
+                PostContent = post.Content,
+                Replies = replies
+            };
+
+            return View(model);
+        }
+
+        private IEnumerable<PostReplyModel> GetPostReplies(Post post)
+        {
+            return post.Replies.Select(reply => new PostReplyModel
+            {
+                Id = reply.Id,
+                Author = reply.User.UserName,
+                AuthorRating = reply.User.Rating,
+                Date = reply.Created,
+                ReplyContent = reply.Content
+            });
         }
 
         public IActionResult Create(int id)
