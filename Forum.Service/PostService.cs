@@ -49,10 +49,12 @@ namespace Forum.Service
 
         public IEnumerable<Post> GetAll()
         {
-            return _context.Posts
+            var posts = _context.Posts
+                .Include(post=>post.Forum)
                 .Include(post=>post.User)
                 .Include(post=>post.Replies)
                 .ThenInclude(reply => reply.User);
+            return posts;
         }
 
         public IEnumerable<ApplicationUser> GetAllUsers(IEnumerable<Post> posts)
@@ -88,7 +90,8 @@ namespace Forum.Service
 
         public IEnumerable<Post> GetLatestPosts(int count)
         {
-            return GetAll().Take(count);
+            var allPosts = GetAll();
+            return allPosts.Take(count);
         }
 
         public IEnumerable<Post> GetPostsBetween(DateTime start, DateTime end)

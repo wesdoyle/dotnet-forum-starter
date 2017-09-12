@@ -25,7 +25,10 @@ namespace forum_app_demo.Controllers
 
         public HomeIndexModel BuildHomeIndexModel()
         {
-            var posts = _postService.GetLatestPosts(10).Select(post => new ForumListingPostModel {
+            var latest = _postService.GetLatestPosts(10);
+
+            var posts = latest.Select(post => new ForumListingPostModel
+            {
                 Id = post.Id,
                 Title = post.Title,
                 Author = post.User.UserName,
