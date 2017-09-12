@@ -23,7 +23,7 @@ namespace Forum.Web.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Post(int id)
+        public async Task<IActionResult> Create(int id)
         {
             var post = _postService.GetById(id);
             var forum = _forumService.GetById(post.Forum.Id);
