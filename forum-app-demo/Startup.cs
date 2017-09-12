@@ -40,6 +40,7 @@ namespace forum_app_demo
             services.AddScoped<IPostReply, PostReplyService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
 
+            services.AddSingleton<UploadService>();
             services.AddMvc();
         }
 

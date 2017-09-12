@@ -1,15 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using System.Net.Http.Headers;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Forum.Service
 {
-    public class UploadService
+    public class UploadService : IUpload
     {
         public IConfiguration Configuration;
 

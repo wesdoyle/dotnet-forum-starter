@@ -15,9 +15,9 @@ namespace Forum.Web.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private IApplicationUser _userService;
-        private UploadService _uploadService;
+        private IUpload _uploadService;
 
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, UploadService uploadService)
+        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService)
         {
             _userManager = userManager;
             _userService = userService;
