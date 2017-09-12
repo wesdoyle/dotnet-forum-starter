@@ -5,15 +5,18 @@ using Forum.Data.Models;
 using System.Threading.Tasks;
 using forum_app_demo.Data;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forum.Service
 {
     public class PostService : IPost
     {
         private ApplicationDbContext _context;
+        private IForum _forumService;
 
-        public PostService(ApplicationDbContext context)
+        public PostService(ApplicationDbContext context, IForum forumService)
         {
+            _forumService = forumService;
             _context = context;
         }
 
@@ -46,6 +49,14 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
+        public IEnumerable<Post> GetAll()
+        {
+            return _context.Posts
+                .Include(post=>post.User)
+                .Include(post=>post.Replies)
+                .ThenInclude(reply => reply.User);
+        }
+
         public IEnumerable<ApplicationUser> GetAllUsers(IEnumerable<Post> posts)
         {
             var users = new List<ApplicationUser>();
@@ -69,6 +80,17 @@ namespace Forum.Service
         public Post GetById(int id)
         {
             return _context.Posts.Find(id);
+        }
+
+        public string GetForumImageUrl(int id)
+        {
+            var post = GetById(id);
+            return post.Forum.ImageUrl;
+        }
+
+        public IEnumerable<Post> GetLatestPosts(int count)
+        {
+            return GetAll().Take(count);
         }
 
         public IEnumerable<Post> GetPostsBetween(DateTime start, DateTime end)

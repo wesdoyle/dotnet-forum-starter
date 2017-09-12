@@ -10,5 +10,6 @@ namespace Forum.Web.Models.Post
         public int AuthorRating { get; set; }
         public string DatePosted { get; set; }
         public int RepliesCount { get; set; }
+        public string ForumImageUrl { get; set; }
     }
 }

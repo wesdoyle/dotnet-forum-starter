@@ -4,16 +4,17 @@ using forum_app_demo.Models;
 using Forum.Web.Models.Home;
 using Forum.Data;
 using Forum.Web.Models.Post;
+using System.Linq;
 
 namespace forum_app_demo.Controllers
 {
     public class HomeController : Controller
     {
-        private IForum _forumService;
+        private IPost _postService;
 
-        protected HomeController(IForum forumService)
+        protected HomeController(IPost postService)
         {
-            _forumService = forumService;
+            _postService= postService;
         }
 
         public IActionResult Index()
@@ -24,9 +25,15 @@ namespace forum_app_demo.Controllers
 
         public HomeIndexModel BuildHomeIndexModel()
         {
-            var posts = _forumService.GetLatestPosts(10);
-
-            var latest = posts.Select(post => new ForumListingPostModel { });
+            var posts = _postService.GetLatestPosts(10).Select(post => new ForumListingPostModel {
+                Id = post.Id,
+                Title = post.Title,
+                Author = post.User.UserName,
+                AuthorRating = post.User.Rating,
+                DatePosted = post.Created.ToString(),
+                RepliesCount = _postService.GetReplyCount(post.Id),
+                ForumImageUrl = _postService.GetForumImageUrl(post.Id)
+            });
 
             return new HomeIndexModel()
             {
