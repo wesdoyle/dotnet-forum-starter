@@ -353,3 +353,15 @@
     padding: 2px 5px 2px 5px;
     border-radius: 1px;
 }
+
+.btn-reply {
+    background-color: #5C6BC0! important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-reply:hover {
+    background-color: #9FA8DA !important;
+    transition: ease-in 0.1s;
+}

@@ -1,0 +1,39 @@
+﻿@model Forum.Web.Models.Post.PostIndexModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">@Model.Title</div>
+        @if (Context.User.Identity.IsAuthenticated)
+            {
+            <span id="headingBtn"><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">Post Reply</a></span>
+        }
+    </div>
+    <div class="row" id="forumIndexContent">
+        <div class="col-md-2">
+            <div class="postAuthorData">
+                @Model.Author (@Model.AuthorRating) | @Model.Date
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="postContent">
+                @Model.PostContent
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.Replies.Any())
+        {
+            <p>Replies here</p>
+        }
+        else
+        {
+            <div class="noPosts">
+                <i class="material-icons md-72">question_answer</i>
+                <h3>
+                    There are no replies to this post.<br />
+                    Why not <a asp-controller="Reply" asp-action="Post" asp-route-id="@Model.Id"><span>Reply?</span></a>
+                </h3>
+            </div>
+        }
+    </div>
+</div>
