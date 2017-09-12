@@ -15,7 +15,7 @@ namespace Forum.Web.Controllers
         private IApplicationUser _userService;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        protected ReplyController(IForum forumService, IPost postService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
+        public ReplyController(IForum forumService, IPost postService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
         {
             _forumService = forumService;
             _postService = postService;
