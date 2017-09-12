@@ -16,9 +16,10 @@ namespace Forum.Service
             _context = context;
         }
 
-        public Task Add(ApplicationUser user)
+        public async Task Add(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            _context.Add(user);
+            await _context.SaveChangesAsync();
         }
 
         public Task Deactivate(ApplicationUser user)
@@ -34,6 +35,14 @@ namespace Forum.Service
         public ApplicationUser GetById(string id)
         {
             return _context.ApplicationUsers.FirstOrDefault(user => user.Id == id);
+        }
+
+        public async Task IncrementRating(string id)
+        {
+            var user = GetById(id);
+            user.Rating += 1;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

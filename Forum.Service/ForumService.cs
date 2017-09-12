@@ -59,7 +59,7 @@ namespace Forum.Service
                 .Include(f=>f.Posts)
                 .ThenInclude(f=>f.Replies)
                 .ThenInclude(f=>f.User)
-                .First();
+                .FirstOrDefault();
 
             if(forum.Posts == null)
             {

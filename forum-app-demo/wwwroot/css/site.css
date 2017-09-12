@@ -46,9 +46,9 @@
     color: white;
     font-size: 1.3em;
     font-family: 'Roboto';
-    padding: 16px 0 14px 0;
-    border-bottom: 1px solid #444;
-    margin-bottom: 8px;
+    padding: 16px 0 32px 0;
+    border-bottom: 1px solid #222;
+    margin-bottom: 12px;
 }
 
 .sectionInfo{
@@ -290,4 +290,22 @@
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
+}
+
+#newPostBtn{
+    margin-right: 20px;
+    float: right;
+}
+
+.btn-newPost {
+    background-color: #c62828 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border-radius: 0px !important;
+}
+
+.btn-newPost:hover {
+    transition: ease-in 0.1s;
+    background-color: #e53935 !important;
+    color: #fff !important;
 }

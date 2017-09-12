@@ -7,6 +7,7 @@ namespace Forum.Data
     {
         ApplicationUser GetById(string id);
 
+        Task IncrementRating(string id);
         Task Add(ApplicationUser user);
         Task Deactivate(ApplicationUser user);
     }

@@ -3,14 +3,18 @@
 <div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">
-            @Model.Name Forum
+            <span id="forumName">@Model.Name Forum</span>
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+                <span id="newPostBtn"><a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newPost">Create Post</a></span>
+            }
         </div>
         <div class="sectionDescription">
             <div class="forumLogo" style="background-image: url(@Model.ImageUrl); background-size:100%"></div>
             <p>Welcome to the <strong>@Model.Name</strong> forum. Please keep posts friendly and on-topic.</p>
             <p>
                 Please read the Forum Guidelines before creating a new post.
-                @if (Context.User.Identity.IsAuthenticated)
+                @if (!Context.User.Identity.IsAuthenticated)
                 {
                     <span>You must be a <a asp-controller="Account" asp-action="Register">registered member</a> to create a new post.</span>
                 }
