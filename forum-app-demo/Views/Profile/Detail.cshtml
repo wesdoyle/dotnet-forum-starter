@@ -5,16 +5,20 @@
         <div class="sectionHeading">
             User Profile | @Model.Username
         </div>
-        @if (Context.User.Identity.IsAuthenticated && Context.User.Identity.Name == Model.Username)
-        {
-            <span id="headingBtn"><a asp-controller="Profile" asp-action="Edit" asp-route-id="@Model.UserId" class="btn btn-newReply">Edit Profile</a></span>
-        }
     </div>
     @if (Context.User.Identity.IsAuthenticated)
     {
         <div class="row userProfile">
             <div class="col-md-4 userProfileImageContainer">
                 <div id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl); background-size:100%;"></div>
+                @if (Context.User.Identity.Name == Model.Username)
+                {
+                    <div id="upload">
+                        <label class="btn btn-default btn-file">
+                            Browse <input type="file" style="display: none;">
+                        </label>
+                    </div>
+                }
             </div>
             <div class="col-md-8 userProfileData">
                 <span id="userName">@Model.Username</span>

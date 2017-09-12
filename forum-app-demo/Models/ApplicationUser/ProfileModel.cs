@@ -1,4 +1,6 @@
-﻿namespace Forum.Web.Models.ApplicationUser
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Forum.Web.Models.ApplicationUser
 {
     public class ProfileModel
     {
@@ -8,5 +10,6 @@
         public string ProfileImageUrl { get; set; }
         public string Description { get; set; }
         public string UserRating { get; set; }
+        public IFormFile ImageUpload { get; set; }
     }
 }

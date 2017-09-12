@@ -376,7 +376,8 @@
 .postAuthorContainer{
     padding: 12px;
     color: #444;
-    font-family: 'Roboto'
+    font-family: 'Roboto';
+    width: 190px;
 }
 
 .postIndexTitle{
@@ -454,4 +455,21 @@
     float: none;
     display: table-cell;
     vertical-align: top;
+}
+
+.postAuthorImage{
+    height: 80px;
+    width: 80px;
+}
+
+.btn-file {
+    color: white;
+    width: 100%;
+    background-color: #4FC3F7;
+    transition: ease 0.3s;
+}
+
+.btn-file:hover {
+    background-color: #039BE5;
+    transition: ease 0.3s;
 }
