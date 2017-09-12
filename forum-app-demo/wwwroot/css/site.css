@@ -332,8 +332,8 @@
     font-weight: bold;
 }
 
-.btn-back{
-    background-color: #00695C !important;
+.btn-back {
+    background-color: #FF9800 !important;
     color: #fff !important;
     transition: ease-in 0.1s;
     border-radius: 0px !important;
@@ -341,6 +341,6 @@
 
 .btn-back:hover {
     transition: ease-in 0.1s;
-    background-color: #00897B !important;
+    background-color: #FFA726 !important;
     color: #fff !important;
 }
