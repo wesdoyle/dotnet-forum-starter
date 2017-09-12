@@ -402,7 +402,7 @@
 }
 
 .userProfile{
-    padding: 12px;
+    padding: 32px 0 64px 24px;
     background-color: #fff;
 }
 
@@ -428,10 +428,11 @@
     padding: 8px;
 }
 
-#userBio{
-    display: block;
+.userBio{
+    color: #555;
     font-family: 'Roboto';
     padding: 12px;
+    margin-left: 10px;
 }
 
 .replyContent{

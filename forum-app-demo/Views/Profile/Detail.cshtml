@@ -22,12 +22,18 @@
             </div>
             <div class="col-md-8 userProfileData">
                 <span id="userName">@Model.Username</span>
-                <span id="userRating">Email: @Model.UserRating</span>
+                <span id="userRating">Current Rating: @Model.UserRating</span>
                 <span id="userEmailLabel">Email: @Model.Email</span>
                 <span id="userCreatedLabel">Member Since: @Model.Email</span>
                 <span id="userBioLabel">User Bio:</span>
                 <div class="userBio">
-                    @Model.Description
+                    @if(Model.Description == "" || Model.Description == null)
+                    {
+                        <span>This user hasn't provided any information.</span>
+                    }
+                    <p>
+                        @Model.Description
+                    </p>
                 </div>
             </div>
         </div>
