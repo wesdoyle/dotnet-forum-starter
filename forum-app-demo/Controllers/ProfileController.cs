@@ -50,26 +50,28 @@ namespace Forum.Web.Controllers
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> Post(IFormFile file)
         {
-            // full path to file in temp location
-            var filePath = Path.GetTempFileName();
+            //// full path to file in temp location
+            //var filePath = Path.GetTempFileName();
 
-            if (file.Length > 0)
-            {
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
+            //if (file.Length > 0)
+            //{
+            //    using (var stream = new FileStream(filePath, FileMode.Create))
+            //    {
+            //        await file.CopyToAsync(stream);
+            //    }
+            //}
 
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
+            var userId = _userManager.GetUserId(User);
             var container = _uploadService.GetBlobContainer();
+
             var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
             var blockBlob = container.GetBlockBlobReference(filename);
 
             await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
-            await _userService.SetProfileImage(blockBlob.Uri);
+            await _userService.SetProfileImage(userId, blockBlob.Uri);
 
             return Json(new
             {

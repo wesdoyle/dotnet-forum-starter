@@ -11,6 +11,6 @@ namespace Forum.Data
         Task IncrementRating(string id);
         Task Add(ApplicationUser user);
         Task Deactivate(ApplicationUser user);
-        Task SetProfileImage(Uri uri);
+        Task SetProfileImage(string id, Uri uri);
     }
 }
