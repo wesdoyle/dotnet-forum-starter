@@ -11,5 +11,6 @@ namespace Forum.Web.Models.Post
         public string DatePosted { get; set; }
         public int RepliesCount { get; set; }
         public string ForumImageUrl { get; set; }
+        public string ForumName { get; set; }
     }
 }

@@ -12,11 +12,9 @@ namespace Forum.Service
     public class PostService : IPost
     {
         private ApplicationDbContext _context;
-        private IForum _forumService;
 
-        public PostService(ApplicationDbContext context, IForum forumService)
+        public PostService(ApplicationDbContext context)
         {
-            _forumService = forumService;
             _context = context;
         }
 

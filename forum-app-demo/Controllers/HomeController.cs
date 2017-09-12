@@ -32,6 +32,7 @@ namespace forum_app_demo.Controllers
                 AuthorRating = post.User.Rating,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = _postService.GetReplyCount(post.Id),
+                ForumName = post.Forum.Title,
                 ForumImageUrl = _postService.GetForumImageUrl(post.Id)
             });
 

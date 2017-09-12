@@ -1,6 +1,5 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Forum.Web.Models.Home.HomeIndexModel
+
 <div class="container body-content">
     <div class="row frontPageTopContainer">
         <p id="welcomeMessage">Welcome to Lambda Forums</p>
@@ -18,109 +17,21 @@
         <h3 id="latestPosts">Latest Posts</h3>
         <table class="table table-hover" id="latestPostsTable">
             <tbody>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            Implementing model-based forms in Angular 4?
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Sam</span> in <span class="postForum">Opinion</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            Angular ngAfterContentInit component hook
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Devon</span> in <span class="postForum">Angular</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            What's your favorite front-end framework?
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Sam</span> in <span class="postForum">Opinion</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            Need help converting complex SQL query to LINQ
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Aditya</span> in <span class="postForum">.NET</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            Best way to prepare for a programming interview?
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Mel</span> in <span class="postForum">Coding Jobs</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            SQL using OUTER APPLY vs CROSS APPLY
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Karthik</span> in <span class="postForum">SQL</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            Passing multiple params React Router
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Brian</span> in <span class="postForum">React</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                            Rails vs Django vs Laravel for a new developer
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Gao Xin</span> in <span class="postForum">Opinion</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="postLogo"></div>
-                        <div class="postTitle">
-                           Django redirect after authentication 
-                        </div>
-                        <div class="postSubTitle">
-                            posted by <span class="postUser">Regina</span> in <span class="postForum">Python</span> on <span class="postDate">09-27-2017</span>
-                        </div>
-                    </td>
-                </tr>
-
+                @foreach (var post in Model.LatestPosts)
+                {
+                    <tr>
+                        <td>
+                            <div class="forumLogo" style="background-image: url(@post.ForumImageUrl); background-size:100%"></div>
+                            <div class="postTitle">
+                                @post.Title
+                            </div>
+                            <div class="postSubTitle">
+                                posted by <span class="postUser">@post.Author</span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
