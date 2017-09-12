@@ -412,6 +412,14 @@
     padding: 8px;
 }
 
+#userName{
+    display: block;
+    color: #2569d5;
+    font-family: 'Roboto';
+    font-size: 1.7em;
+    padding: 8px;
+}
+
 #userBio{
     display: block;
     font-family: 'Roboto';

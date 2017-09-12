@@ -25,6 +25,7 @@ namespace Forum.Web.Controllers
             {
                 UserId = user.Id,
                 Username = user.UserName,
+                UserRating = user.Rating.ToString(),
                 Description = user.UserDescription,
                 Email = user.Email,
                 ProfileImageUrl = user.ProfileImageUrl
