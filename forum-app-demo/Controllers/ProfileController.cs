@@ -17,7 +17,7 @@ namespace Forum.Web.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index(string id)
+        public IActionResult View(string id)
         {
             var user = _userService.GetById(id);
 
