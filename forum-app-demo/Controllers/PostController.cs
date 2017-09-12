@@ -35,10 +35,11 @@ namespace Forum.Web.Controllers
             var model = new PostIndexModel {
                 Id = post.Id,
                 Title = post.Title,
-                AuthorName = post.User.UserName,
                 AuthorId = post.User.Id,
-                Date = post.Created,
+                AuthorName = post.User.UserName,
+                AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
+                Date = post.Created,
                 PostContent = post.Content,
                 Replies = replies
             };
