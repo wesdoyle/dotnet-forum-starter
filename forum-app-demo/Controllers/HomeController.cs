@@ -1,14 +1,38 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using forum_app_demo.Models;
+using Forum.Web.Models.Home;
+using Forum.Data;
+using Forum.Web.Models.Post;
 
 namespace forum_app_demo.Controllers
 {
     public class HomeController : Controller
     {
+        private IForum _forumService;
+
+        protected HomeController(IForum forumService)
+        {
+            _forumService = forumService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var model = BuildHomeIndexModel();
+            return View(model);
+        }
+
+        public HomeIndexModel BuildHomeIndexModel()
+        {
+            var posts = _forumService.GetLatestPosts(10);
+
+            var latest = posts.Select(post => new ForumListingPostModel { });
+
+            return new HomeIndexModel()
+            {
+                LatestPosts = posts
+            };
+
         }
 
         public IActionResult About()

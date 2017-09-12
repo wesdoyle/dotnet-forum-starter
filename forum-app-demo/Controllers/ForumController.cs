@@ -76,6 +76,7 @@ namespace forum_app_demo.Controllers
             {
                 Id = post.Id,
                 Author = post.User.UserName,
+                AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count()

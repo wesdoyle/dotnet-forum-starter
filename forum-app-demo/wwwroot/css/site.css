@@ -141,6 +141,16 @@
     font-size: 0.8em;
 }
 
+.postData{
+    display: inline-block;
+}
+
+.postDate{
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.8em;
+}
+
 .postLogo {
     display: inline-block;
     border-radius: 3px;
