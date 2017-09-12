@@ -2,19 +2,22 @@
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <div class="sectionHeading">@Model.Title</div>
+        <div class="sectionHeading">
+            <span class="postIndexTitle">
+                @Model.Title
+            </span>
+        </div>
         @if (Context.User.Identity.IsAuthenticated)
             {
             <span id="headingBtn"><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">Post Reply</a></span>
         }
     </div>
-    <div class="row" id="forumIndexContent">
-        <div class="col-md-2">
-            <div class="postAuthorData">
-                @Model.Author (@Model.AuthorRating) | @Model.Date
-            </div>
+    <div class="row" id="postIndexContent">
+        <div class="col-md-3 postAuthorContainer">
+                @Model.Author (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
+                @Model.Date
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9 postContentContainer">
             <div class="postContent">
                 @Model.PostContent
             </div>

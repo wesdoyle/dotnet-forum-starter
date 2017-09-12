@@ -365,3 +365,30 @@
     background-color: #9FA8DA !important;
     transition: ease-in 0.1s;
 }
+
+.postAuthorContainer{
+    padding: 12px;
+    color: #444;
+    border-right: 1px solid #333;
+    font-family: 'Roboto'
+}
+
+.postIndexTitle{
+    font-size: 1.4em;
+}
+
+#postIndexContent{
+    background-color: white;
+}
+
+.postContentContainer{
+    font-family: 'Roboto';
+    color: #222;
+    padding: 12px;
+}
+
+.postAuthorRating{
+    font-size: 0.9em;
+    color: #159;
+    font-family: 'Roboto Mono';
+}
