@@ -369,7 +369,6 @@
 .postAuthorContainer{
     padding: 12px;
     color: #444;
-    border-right: 1px solid #333;
     font-family: 'Roboto'
 }
 
@@ -384,7 +383,8 @@
 .postContentContainer{
     font-family: 'Roboto';
     color: #222;
-    padding: 12px;
+    padding: 22px;
+    border-left: 1px solid #ddd;
 }
 
 .postAuthorRating{
