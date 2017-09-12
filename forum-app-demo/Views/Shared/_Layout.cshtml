@@ -26,21 +26,24 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a asp-controller="Forum" asp-action="Index">All Forums</a></li>
-                    <li><a href="#">Favorites</a></li>
-                    <li><a href="#">Messages</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">Forum</li>
-                            <li><a href="#">Manage Favorites</a></li>
-                            <li><a href="#">Content Filtering</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Profile</li>
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">Privacy</a></li>
-                        </ul>
-                    </li>
+                    <li class="active"><a asp-controller="Forum" asp-action="Index">Forums</a></li>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="#">Favorites</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Forum</li>
+                                <li><a href="#">Manage Favorites</a></li>
+                                <li><a href="#">Content Filtering</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Profile</li>
+                                <li><a href="#">Edit Profile</a></li>
+                                <li><a href="#">Privacy</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (!Context.User.Identity.IsAuthenticated)

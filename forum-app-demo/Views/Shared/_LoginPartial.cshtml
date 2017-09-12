@@ -1,5 +1,5 @@
 @using Microsoft.AspNetCore.Identity
-@using forum_app_demo.Models
+@using Forum.Data.Models
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -17,6 +17,7 @@
         </ul>
     </form>
 }
+
 else
 {
     <ul class="nav navbar-nav navbar-right">
