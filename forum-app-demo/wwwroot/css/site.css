@@ -432,3 +432,26 @@
     font-family: 'Roboto';
     padding: 12px;
 }
+
+.replyContent{
+    display: table;
+    background-color: white;
+    border-bottom: 1px solid #aaa;
+    width: inherit;
+}
+
+.replyAuthorContainer {
+    display: table-cell;
+    padding: 12px;
+}
+
+.replyContentContainer {
+    padding: 12px;
+    border-left: 1px solid #eee;
+}
+
+[class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}

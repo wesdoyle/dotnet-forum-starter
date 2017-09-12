@@ -90,7 +90,7 @@ namespace Forum.Service
                 .Include(post=>post.User)
                 .Include(post=>post.Replies)
                 .ThenInclude(reply => reply.User)
-                .First();
+                .FirstOrDefault();
         }
 
         public string GetForumImageUrl(int id)

@@ -34,7 +34,7 @@ namespace Forum.Web.Controllers
             {
                 PostContent = post.Content,
                 PostTitle = post.Title,
-                PostId = id,
+                PostId = post.Id,
 
                 ForumName = forum.Title,
                 ForumId = forum.Id,
@@ -64,7 +64,7 @@ namespace Forum.Web.Controllers
 
             var reply = BuildReply(model, user);
             await _postService.AddReply(reply);
-            return RedirectToAction("Index", "Post", model.PostId);
+            return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
 
         private PostReply BuildReply(PostReplyModel reply, ApplicationUser user)

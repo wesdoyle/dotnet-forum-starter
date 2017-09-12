@@ -27,18 +27,31 @@
             <span><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">Post Reply</a></span>
         </div>
     }
-    <div class="row">
-        @if (Model.Replies.Any())
-        {
-            <p>Replies here</p>
-        }
-        else
-        {
-            <div class="noPosts">
-                <h3>
-                    There are no replies to this post.<br />
-                </h3>
+    @if (Model.Replies.Any())
+    {
+        @foreach (var reply in Model.Replies)
+                {
+            <div class="row replyContent">
+                <div class="col-md-3 replyAuthorContainer">
+                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
+                        <strong>@reply.AuthorName</strong>
+                    </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
+                    <span class="replyDate">@reply.Date</span>
+                </div>
+                <div class="col-md-9 replyContentContainer">
+                    <div class="postContent">
+                        @reply.ReplyContent
+                    </div>
+                </div>
             </div>
         }
-    </div>
+    }
+    else
+    {
+        <div class="noPosts">
+            <h3>
+                There are no replies to this post.<br />
+            </h3>
+        </div>
+    }
 </div>
