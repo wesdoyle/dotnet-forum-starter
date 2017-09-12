@@ -10,8 +10,10 @@
     </div>
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
-                <strong>@Model.Author</strong> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
-                <span class="postDate">@Model.Date</span>
+            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
+                <strong>@Model.AuthorName</strong>
+            </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
+            <span class="postDate">@Model.Date</span>
         </div>
         <div class="col-md-9 postContentContainer">
             <div class="postContent">
