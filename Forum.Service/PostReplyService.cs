@@ -3,6 +3,8 @@ using System;
 using Forum.Data.Models;
 using System.Threading.Tasks;
 using forum_app_demo.Data;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forum.Service
 {
@@ -17,7 +19,12 @@ namespace Forum.Service
 
         public PostReply GetById(int id)
         {
-            return _context.PostReplies.Find(id);
+            return _context.PostReplies
+                .Include(r => r.Post)
+                .ThenInclude(post=>post.Forum)
+                .Include(r=>r.Post)
+                .ThenInclude(post=>post.User)
+                .Where(r => r.Id == id).First();
         }
 
         public async Task Delete(int id)

@@ -23,7 +23,7 @@
             <div class="authorBlock">
                 You're submitting this Reply as <span class="authorBlockName">@Model.AuthorName</span>
             </div>
-            <form asp-action="AddPost" method="post" id="addPostForm">
+            <form asp-action="AddReply" method="post" id="addPostForm">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="ReplyContent">Post Content</label>

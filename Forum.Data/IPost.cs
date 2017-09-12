@@ -1,4 +1,5 @@
 ﻿using Forum.Data.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace Forum.Data
         Task Archive(int id);
         Task Delete(int id );
         Task EditPostContent(int id, string content);
+
+        Task AddReply(PostReply reply);
 
         int GetReplyCount(int id);
 

@@ -55,5 +55,28 @@ namespace Forum.Web.Controllers
         {
             return await _userManager.GetUserAsync(User);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddReply(PostReplyModel model)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.FindByIdAsync(userId);
+
+            var reply = BuildReply(model, user);
+            await _postService.AddReply(reply);
+            return RedirectToAction("Index", "Post", model.PostId);
+        }
+
+        private PostReply BuildReply(PostReplyModel reply, ApplicationUser user)
+        {
+            var now = DateTime.Now;
+
+            return new PostReply 
+            {
+                Content = reply.ReplyContent,
+                Created = now,
+                User = user
+            };
+        }
     }
 }
