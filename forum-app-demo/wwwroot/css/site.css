@@ -177,6 +177,7 @@
 .forumTitle {
     font-family: 'Roboto';
     font-weight: bold;
+    font-size: 1.1em;
 }
 
 .forumSubTitle {
@@ -346,9 +347,9 @@
 }
 
 .hasRecentPost {
-    font-size: 0.6em;
-    background-color: #FF7043;
+    color: white;
+    background-color: #f44336;
     font-family: 'Roboto Mono';
-    padding: 3px;
+    padding: 2px 5px 2px 5px;
     border-radius: 1px;
 }
