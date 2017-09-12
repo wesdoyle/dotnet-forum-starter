@@ -8,7 +8,7 @@
             </span>
         </div>
         @if (Context.User.Identity.IsAuthenticated)
-            {
+        {
             <span id="headingBtn"><a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">Post Reply</a></span>
         }
     </div>
