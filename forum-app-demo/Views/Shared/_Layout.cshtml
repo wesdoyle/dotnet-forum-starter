@@ -35,7 +35,7 @@
                             <ul class="dropdown-menu">
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Profile</li>
-                                <li><a href="#">Edit Profile</a></li>
+                                <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@User.Identity">My Profile</a></li>
                             </ul>
                         </li>
                     }

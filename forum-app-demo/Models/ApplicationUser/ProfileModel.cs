@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 
 namespace Forum.Web.Models.ApplicationUser
 {
@@ -7,9 +8,11 @@ namespace Forum.Web.Models.ApplicationUser
         public string UserId { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        public string ProfileImageUrl { get; set; }
         public string Description { get; set; }
         public string UserRating { get; set; }
+        public string ProfileImageUrl { get; set; }
+
+        public DateTime DateJoined { get; set; }
         public IFormFile ImageUpload { get; set; }
     }
 }

@@ -65,12 +65,7 @@ namespace Forum.Web.Controllers
             await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
             await _userService.SetProfileImage(userId, blockBlob.Uri);
 
-            return Json(new
-            {
-                name = blockBlob.Name,
-                uri = blockBlob.Uri,
-                size = blockBlob.Properties.Length
-            });
+            return RedirectToAction("Detail", "Profile", new { id = userId });
         }
     }
 }

@@ -23,7 +23,9 @@
                         <td>
                             <div class="forumLogo" style="background-image: url(@post.ForumImageUrl); background-size:100%"></div>
                             <div class="postTitle">
-                                @post.Title
+                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                    @post.Title
+                                </a>
                             </div>
                             <div class="postSubTitle">
                                 <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.Author</a></span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
