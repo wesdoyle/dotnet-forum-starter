@@ -1,4 +1,5 @@
-﻿using Forum.Data.Models;
+﻿using System;
+using Forum.Data.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -16,5 +17,6 @@ namespace Forum.Data
         IEnumerable<ApplicationUser> GetActiveUsers(int forumId);
         bool HasRecentPost(int id);
         Task Add(Models.Forum forum);
+        Task SetForumImage(int id, Uri uri);
     }
 }

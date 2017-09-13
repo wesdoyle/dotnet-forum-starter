@@ -1,23 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Forum.Data;
+using Forum.Service;
 using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 
 namespace Forum.Web.Controllers
 {
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
+        private readonly IApplicationUser _userService;
+        private readonly IUpload _uploadService;
+        private readonly IConfiguration _configuration;
 
-        public ForumController(IForum forumService)
+        public ForumController(IForum forumService, IConfiguration configuration, IApplicationUser userService, IUpload uploadService)
         {
             _forumService = forumService;
+            _configuration = configuration;
+            _userService = userService;
+            _uploadService = uploadService;
         }
 
         public IActionResult Index()
@@ -123,11 +134,25 @@ namespace Forum.Web.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 Created = DateTime.Now,
-                ImageUrl = model.ImageUrl
             };
 
+            await PostForumImage(model.ImageUpload);
             await _forumService.Add(forum);
             return RedirectToAction("Index", "Forum");
+        }
+
+        public async Task PostForumImage(IFormFile file)
+        {
+            var connectionString = _configuration.GetConnectionString("AzureStorageAccountConnectionString");
+            var container = _uploadService.GetBlobContainer(connectionString);
+
+            var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+            var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
+
+            var blockBlob = container.GetBlockBlobReference(filename);
+
+            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+            await _forumService.SetForumImage(forumId, blockBlob.Uri);
         }
     }
 }

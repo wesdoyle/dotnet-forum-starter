@@ -15,8 +15,8 @@ namespace Forum.Web.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private IApplicationUser _userService;
-        private IUpload _uploadService;
+        private readonly IApplicationUser _userService;
+        private readonly IUpload _uploadService;
         private readonly IConfiguration _configuration;
 
         public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService, IConfiguration configuration)
@@ -51,7 +51,7 @@ namespace Forum.Web.Controllers
          */
 
         [HttpPost("UploadFiles")]
-        public async Task<IActionResult> Post(IFormFile file)
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
         {
             var userId = _userManager.GetUserId(User);
             var connectionString = _configuration.GetConnectionString("AzureStorageAccountConnectionString");

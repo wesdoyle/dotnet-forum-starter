@@ -1,7 +1,6 @@
 ﻿using Forum.Data;
 using System;
 using System.Threading.Tasks;
-using forum_app_demo.Data;
 using Forum.Data.Models;
 using System.Linq;
 
@@ -9,7 +8,7 @@ namespace Forum.Service
 {
     public class ApplicationUserService : IApplicationUser
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public ApplicationUserService(ApplicationDbContext context)
         {

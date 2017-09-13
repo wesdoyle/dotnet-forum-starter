@@ -96,6 +96,14 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
+        public async Task SetForumImage(int id, Uri uri)
+        {
+            var forum = GetById(id);
+            forum.ImageUrl = uri.AbsoluteUri;
+            _context.Update(forum);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task UpdateForumDescription(int id, string description)
         {
             var forum = GetById(id);
