@@ -1,9 +1,16 @@
 ﻿@model Forum.Web.Models.ApplicationUser.ProfileModel
 
+@inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
+
+@{
+    var user = UserManager.FindByNameAsync(User.Identity.Name);
+    var isAdmin = user.Result.IsAdmin;
+}
+
 <div class="container body-content">
     <div class="row sectionHeader">
-        <div class="sectionHeading">
-            User Profile | @Model.Username
+        <div class="sectionHeading noBorder">
+            User Profile
         </div>
     </div>
     @if (Context.User.Identity.IsAuthenticated)
@@ -24,7 +31,11 @@
                 }
             </div>
             <div class="col-md-8">
-                <span id="userName">@Model.Username</span>
+                <span id="userName">@Model.Username</span> 
+                @if (isAdmin)
+                {
+                    <span class="isAdmin">Admin</span>
+                }
                 <span id="userRating">Current Rating: @Model.UserRating</span>
                 <span id="userEmailLabel">Email: @Model.Email</span>
                 <span id="userCreatedLabel">Member Since: @Model.DateJoined</span>

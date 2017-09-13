@@ -10,6 +10,7 @@ namespace Forum.Web.Models.Reply
         public string AuthorName { get; set; }
         public int AuthorRating { get; set; }
         public string AuthorImageUrl { get; set; }
+        public bool IsAuthorAdmin { get; set; }
 
         public DateTime Date { get; set; }
         public string ReplyContent { get; set; }

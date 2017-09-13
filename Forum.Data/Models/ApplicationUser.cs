@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace Forum.Data.Models
 {
@@ -9,5 +10,6 @@ namespace Forum.Data.Models
         public string ProfileImageUrl { get; set; }
         public int Rating { get; set; }
         public bool IsAdmin { get; set; }
+        public DateTime MemberSince { get; set; }
     }
 }

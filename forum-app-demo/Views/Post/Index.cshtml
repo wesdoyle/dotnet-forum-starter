@@ -1,8 +1,8 @@
 ﻿@model Forum.Web.Models.Post.PostIndexModel
 
 <div class="container body-content">
-    <div class="row sectionHeader">
-        <div class="sectionHeading">
+    <div class="row postHeader">
+        <div class="postHeading">
             <span class="postIndexTitle">
                 @Model.Title
             </span>
@@ -15,6 +15,10 @@
                 <strong>@Model.AuthorName</strong>
             </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
             <span class="postDate">@Model.Date</span>
+            @if (@Model.IsAuthorAdmin)
+            {
+                <span class="isAdmin smaller">Admin</span>
+            }
         </div>
         <div class="col-md-9 postContentContainer">
             <div class="postContent">
@@ -30,7 +34,7 @@
     }
     @if (Model.Replies.Any())
     {
-        @foreach (var reply in Model.Replies)
+        foreach (var reply in Model.Replies)
                 {
             <div class="row replyContent">
                 <div class="col-md-3 replyAuthorContainer">
@@ -38,6 +42,11 @@
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         <strong>@reply.AuthorName</strong>
                     </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
+                    @if (@reply.IsAuthorAdmin)
+                    {
+                        <div class="isAdmin profileLabel smaller">Admin</div>
+                        <br />
+                    }
                     <span class="postDate">@reply.Date</span>
                 </div>
                 <div class="col-md-9 replyContentContainer">

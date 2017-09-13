@@ -10,8 +10,8 @@ namespace Forum.Web.Controllers
 {
     public class ReplyController : Controller
     {
-        private IForum _forumService;
-        private IPost _postService;
+        private readonly IForum _forumService;
+        private readonly IPost _postService;
         private IApplicationUser _userService;
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -44,6 +44,7 @@ namespace Forum.Web.Controllers
                 AuthorImageUrl = user.ProfileImageUrl,
                 AuthorId = user.Id,
                 AuthorRating = user.Rating,
+                IsAuthorAdmin = user.IsAdmin,
 
                 Date = DateTime.Now
             };

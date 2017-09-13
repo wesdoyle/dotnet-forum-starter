@@ -37,6 +37,7 @@ namespace Forum.Web.Controllers
                 AuthorName = post.User.UserName,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
+                IsAuthorAdmin = post.User.IsAdmin,
                 Date = post.Created,
                 PostContent = post.Content,
                 Replies = replies
@@ -55,7 +56,8 @@ namespace Forum.Web.Controllers
                 AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,
                 Date = reply.Created,
-                ReplyContent = reply.Content
+                ReplyContent = reply.Content,
+                IsAuthorAdmin = reply.User.IsAdmin
             });
         }
 

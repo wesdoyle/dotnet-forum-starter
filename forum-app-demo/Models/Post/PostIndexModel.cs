@@ -13,6 +13,7 @@ namespace Forum.Web.Models.Post
         public string AuthorImageUrl { get; set; }
         public int AuthorRating { get; set; }
         public DateTime Date { get; set; }
+        public bool IsAuthorAdmin { get; set; }
         public string PostContent { get; set; }
 
         public IEnumerable<PostReplyModel> Replies { get; set; }
