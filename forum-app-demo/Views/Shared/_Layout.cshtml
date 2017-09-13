@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
+
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -35,7 +38,7 @@
                             <ul class="dropdown-menu">
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Profile</li>
-                                <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@User.Identity">My Profile</a></li>
+                                <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
                             </ul>
                         </li>
                     }
