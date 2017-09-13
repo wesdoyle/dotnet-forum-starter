@@ -8,24 +8,26 @@
     </div>
     <div class="row">
         <div class="createForumSection">
-            <form asp-action="AddForum" method="post" id="addPostForm">
+            <form asp-action="AddForum" method="post" id="createForumForm">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Title"></label>
-                    <input asp-for="Title" class="form-control" />
+                    <label asp-for="Title">Forum Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="Choose a Forum Title"/>
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Description">Post Content</label>
+                    <label asp-for="Description"></label>
                     <input asp-for="Description" rows="1" class="form-control" placeholder="Write a brief description here.">
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div id="upload">
+                    <label>Upload Forum Image</label>
+                    <br/>
                     <label class="btn btn-default btn-file">
                         Browse <input type="file" name="file" style="display: none;">
                     </label>
                 </div>
-                <button type="submit" id="registerBtn" class="btn btn-submitPost">Submit Post</button>
+                <button type="submit" id="registerBtn" class="btn btn-submitPost">Create</button>
             </form>
         </div>
     </div>

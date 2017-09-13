@@ -13,7 +13,7 @@
                 <div id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl); background-size:100%;"></div>
                 @if (Context.User.Identity.Name == Model.Username)
                 {
-                    <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="Post">
+                    <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
                         <div id="upload">
                             <label class="btn btn-default btn-file">
                                 Browse <input type="file" name="file" style="display: none;">

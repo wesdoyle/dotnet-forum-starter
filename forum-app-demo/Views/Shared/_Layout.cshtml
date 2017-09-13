@@ -1,5 +1,10 @@
 ﻿@inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
 
+    @{
+        var user = UserManager.FindByNameAsync(User.Identity.Name);
+        var isAdmin = user.Result.IsAdmin;
+    }
+
 <!DOCTYPE html>
 
 <html>
@@ -38,6 +43,10 @@
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Profile</li>
                                 <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
+                                @if (isAdmin)
+                                {
+                                    <li><a asp-controller="Forum" asp-action="Create">Create Forum</a></li>
+                                }
                             </ul>
                         </li>
                     }

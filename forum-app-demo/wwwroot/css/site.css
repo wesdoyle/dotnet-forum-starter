@@ -483,3 +483,8 @@
     background-color: #fff;
     padding: 24px;
 }
+
+#createForumForm {
+    width: 50%;
+    margin: auto;
+}

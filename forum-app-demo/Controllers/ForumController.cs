@@ -109,7 +109,7 @@ namespace Forum.Web.Controllers
             return View(model);
         }
 
-        public IActionResult Add()
+        public IActionResult Create()
         {
             var model = new AddForumModel();
             return View(model);
