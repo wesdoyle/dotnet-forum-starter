@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Forum.Data;
 using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
@@ -115,13 +116,18 @@ namespace Forum.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddForum(AddForumModel model)
+        public async Task<IActionResult> AddForum(AddForumModel model)
         {
-            var forum = new Data.Models.Forum
+            var forum = new Data.Models.Forum()
             {
-                
-            }
-            _forumService.Add();
+                Title = model.Title,
+                Description = model.Description,
+                Created = DateTime.Now,
+                ImageUrl = model.ImageUrl
+            };
+
+            await _forumService.Add(forum);
+            return RedirectToAction("Index", "Forum");
         }
     }
 }

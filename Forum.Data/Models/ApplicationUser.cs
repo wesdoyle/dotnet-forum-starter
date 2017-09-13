@@ -8,5 +8,6 @@ namespace Forum.Data.Models
         public string UserDescription { get; set; }
         public string ProfileImageUrl { get; set; }
         public int Rating { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }
