@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="createForumSection">
-            <form asp-action="AddForum" method="post" id="createForumForm">
+            <form asp-action="AddForum" method="post" id="createForumForm" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Title">Forum Title</label>
@@ -24,7 +24,7 @@
                     <label>Upload Forum Image</label>
                     <br/>
                     <label class="btn btn-default btn-file">
-                        Browse <input asp-for="ImageUpload" type="file" name="file" style="display: none;">
+                        Browse <input asp-for="ImageUpload" type="file" style="display: none;">
                     </label>
                 </div>
                 <button type="submit" id="registerBtn" class="btn btn-submitPost">Create</button>

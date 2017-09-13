@@ -130,14 +130,26 @@ namespace Forum.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddForum(AddForumModel model)
         {
-            var blockBlob = PostForumImage(model.ImageUpload);
+
+            var imageUri = "";
+
+            if (model.ImageUpload != null)
+            {
+                var blockBlob = PostForumImage(model.ImageUpload);
+                imageUri = blockBlob.Uri.AbsoluteUri;
+            }
+
+            else
+            {
+                imageUri = "/images/users/default.png";
+            }
 
             var forum = new Data.Models.Forum()
             {
                 Title = model.Title,
                 Description = model.Description,
                 Created = DateTime.Now,
-                ImageUrl = blockBlob.Uri.AbsoluteUri
+                ImageUrl = imageUri
             };
 
             await _forumService.Add(forum);
