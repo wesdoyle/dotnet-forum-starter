@@ -9,7 +9,7 @@
     @if (Context.User.Identity.IsAuthenticated)
     {
         <div class="row userProfile">
-            <div class="col-md-4 userProfileImageContainer">
+            <div class="col-md-4">
                 <div id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl); background-size:100%;"></div>
                 @if (Context.User.Identity.Name == Model.Username)
                 {
@@ -23,14 +23,14 @@
                     </form>
                 }
             </div>
-            <div class="col-md-8 userProfileData">
+            <div class="col-md-8">
                 <span id="userName">@Model.Username</span>
                 <span id="userRating">Current Rating: @Model.UserRating</span>
                 <span id="userEmailLabel">Email: @Model.Email</span>
                 <span id="userCreatedLabel">Member Since: @Model.DateJoined</span>
                 <span id="userBioLabel">User Bio:</span>
                 <div class="userBio">
-                    @if(Model.Description == "" || Model.Description == null)
+                    @if(string.IsNullOrEmpty(Model.Description))
                     {
                         <span>This user hasn't provided any information.</span>
                     }
