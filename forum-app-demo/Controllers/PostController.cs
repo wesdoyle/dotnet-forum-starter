@@ -30,7 +30,7 @@ namespace Forum.Web.Controllers
         {
             var post = _postService.GetById(id);
 
-            var replies = GetPostReplies(post);
+            var replies = GetPostReplies(post).OrderByDescending(reply=>reply.Date);
 
             var model = new PostIndexModel {
                 Id = post.Id,

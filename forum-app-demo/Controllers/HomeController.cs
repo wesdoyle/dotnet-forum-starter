@@ -38,7 +38,7 @@ namespace forum_app_demo.Controllers
                 RepliesCount = _postService.GetReplyCount(post.Id),
                 ForumName = post.Forum.Title,
                 ForumImageUrl = _postService.GetForumImageUrl(post.Id)
-            });
+            }).OrderByDescending(post=>post.DatePosted);
 
             return new HomeIndexModel()
             {

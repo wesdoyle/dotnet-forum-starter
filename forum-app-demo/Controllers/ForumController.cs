@@ -34,7 +34,7 @@ namespace forum_app_demo.Controllers
 
             var model = new ForumIndexModel
             {
-                ForumList = forums,
+                ForumList = forums.OrderBy(forum=>forum.Name),
                 NumberOfForums = forums.Count()
             };
 
@@ -82,7 +82,7 @@ namespace forum_app_demo.Controllers
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count()
-            });
+            }).OrderByDescending(post=>post.DatePosted);
 
             var latestPost = allPosts
                 .OrderByDescending(post => post.DatePosted)
