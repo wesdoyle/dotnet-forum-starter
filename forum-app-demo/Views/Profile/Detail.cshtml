@@ -39,16 +39,6 @@
                 <span id="userRating">Current Rating: @Model.UserRating</span>
                 <span id="userEmailLabel">Email: @Model.Email</span>
                 <span id="userCreatedLabel">Member Since: @Model.DateJoined</span>
-                <span id="userBioLabel">User Bio:</span>
-                <div class="userBio">
-                    @if(string.IsNullOrEmpty(Model.Description))
-                    {
-                        <span>This user hasn't provided any information.</span>
-                    }
-                    <p>
-                        @Model.Description
-                    </p>
-                </div>
             </div>
         </div>
     }
