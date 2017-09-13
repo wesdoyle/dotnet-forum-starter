@@ -1,16 +1,16 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using forum_app_demo.Models;
-using Forum.Web.Models.Home;
-using Forum.Data;
-using Forum.Web.Models.Post;
 using System.Linq;
+using forum_app_demo.Models;
+using Forum.Data;
+using Forum.Web.Models.Home;
+using Forum.Web.Models.Post;
+using Microsoft.AspNetCore.Mvc;
 
-namespace forum_app_demo.Controllers
+namespace Forum.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IPost _postService;
+        private readonly IPost _postService;
 
         public HomeController(IPost postService)
         {

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using forum_app_demo.Controllers;
+using forum_app_demo.Models.AccountViewModels;
+using forum_app_demo.Services;
+using Forum.Data.Models;
+using Forum.Web.Extensions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using forum_app_demo.Models.AccountViewModels;
-using forum_app_demo.Services;
-using Forum.Data.Models;
 
-namespace forum_app_demo.Controllers
+namespace Forum.Web.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]

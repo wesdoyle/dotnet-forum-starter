@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace forum_app_demo.Data
+namespace Forum.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

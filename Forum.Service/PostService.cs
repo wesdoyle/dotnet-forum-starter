@@ -11,7 +11,7 @@ namespace Forum.Service
 {
     public class PostService : IPost
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public PostService(ApplicationDbContext context)
         {
@@ -71,13 +71,9 @@ namespace Forum.Service
             {
                 users.Add(post.User);
 
-                if (post.Replies.Any())
-                {
-                    foreach(var reply in post.Replies)
-                    {
-                        users.Add(reply.User);
-                    }
-                }
+                if (!post.Replies.Any()) continue;
+
+                users.AddRange(post.Replies.Select(reply => reply.User));
             }
 
             return users.Distinct();

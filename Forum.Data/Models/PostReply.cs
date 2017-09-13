@@ -1,5 +1,4 @@
-﻿using forum_app_demo.Models;
-using System;
+﻿using System;
 
 namespace Forum.Data.Models
 {

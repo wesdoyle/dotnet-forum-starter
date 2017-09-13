@@ -1,17 +1,18 @@
-﻿using Forum.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using Forum.Data;
 using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace forum_app_demo.Controllers
+namespace Forum.Web.Controllers
 {
     public class ForumController : Controller
     {
-        private IForum _forumService;
+        private readonly IForum _forumService;
 
         public ForumController(IForum forumService)
         {
@@ -32,10 +33,12 @@ namespace forum_app_demo.Controllers
                 HasRecentPost = _forumService.HasRecentPost(f.Id) 
             });
 
+            var forumListingModels = forums as IList<ForumListingModel> ?? forums.ToList();
+
             var model = new ForumIndexModel
             {
-                ForumList = forums.OrderBy(forum=>forum.Name),
-                NumberOfForums = forums.Count()
+                ForumList = forumListingModels.OrderBy(forum=>forum.Name),
+                NumberOfForums = forumListingModels.Count()
             };
 
             return View(model);
@@ -50,7 +53,7 @@ namespace forum_app_demo.Controllers
                 return new ForumListingPostModel
                 {
                     Author = post.User != null ? post.User.UserName : "",
-                    DatePosted = post.Created != null ? post.Created.ToString() : "",
+                    DatePosted = post.Created.ToString(CultureInfo.InvariantCulture),
                     Title = post.Title ?? ""
                 };
             }
@@ -80,13 +83,15 @@ namespace forum_app_demo.Controllers
                 AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
-                DatePosted = post.Created.ToString(),
+                DatePosted = post.Created.ToString(CultureInfo.InvariantCulture),
                 RepliesCount = post.Replies.Count()
             }).OrderByDescending(post=>post.DatePosted);
 
             var latestPost = allPosts
                 .OrderByDescending(post => post.DatePosted)
                 .FirstOrDefault();
+
+            var count = allPosts.Count();
 
             var model = new ForumListingModel
             {
@@ -96,26 +101,11 @@ namespace forum_app_demo.Controllers
                 AllPosts = allPosts,
                 ImageUrl = forum.ImageUrl,
                 LatestPost = latestPost,
-                NumberOfPosts = allPosts.Count(),
+                NumberOfPosts = count,
                 NumberOfUsers = _forumService.GetActiveUsers(id).Count()
             };
 
             return View(model);
-        }
-
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        public IActionResult Edit()
-        {
-            return View();
-        }
-
-        public IActionResult Delete()
-        {
-            return View();
         }
     }
 }

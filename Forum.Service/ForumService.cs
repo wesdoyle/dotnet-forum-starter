@@ -11,8 +11,8 @@ namespace Forum.Service
 {
     public class ForumService : IForum
     {
-        private ApplicationDbContext _context;
-        private IPost _postService;
+        private readonly ApplicationDbContext _context;
+        private readonly IPost _postService;
 
         public ForumService(ApplicationDbContext context, IPost postService)
         {
@@ -86,9 +86,9 @@ namespace Forum.Service
 
         public bool HasRecentPost(int id)
         {
-            var hoursAgo = 12;
+            const int hoursAgo = 12;
             var window = DateTime.Now.AddHours(-hoursAgo);
-            return GetById(id).Posts.Where(post => post.Created >= window).Any();
+            return GetById(id).Posts.Any(post => post.Created >= window);
         }
 
         public async Task UpdateForumDescription(int id, string description)

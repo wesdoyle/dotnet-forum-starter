@@ -13,16 +13,14 @@ namespace Forum.Web.Controllers
 {
     public class PostController : Controller
     {
-        private IPost _postService;
-        private IForum _forumService;
-        private IApplicationUser _userService;
+        private readonly IPost _postService;
+        private readonly IForum _forumService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public PostController(IPost postService, IForum forumService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
             _forumService = forumService;
-            _userService = userService;
             _userManager = userManager;
         }
 

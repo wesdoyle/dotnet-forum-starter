@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using forum_app_demo.Controllers;
+using Forum.Web.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Microsoft.AspNetCore.Mvc
+namespace Forum.Web.Extensions
 {
     public static class UrlHelperExtensions
     {

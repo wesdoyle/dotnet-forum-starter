@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using forum_app_demo.Models.ManageViewModels;
 using forum_app_demo.Services;
 using Forum.Data.Models;
+using Forum.Web.Extensions;
 
 namespace forum_app_demo.Controllers
 {
