@@ -50,7 +50,7 @@ namespace Forum.Web.Controllers
          * In addition to the local file system, files can be streamed to Azure Blob storage or Entity Framework.
          */
 
-        [HttpPost("UploadFiles")]
+        [HttpPost]
         public async Task<IActionResult> UploadProfileImage(IFormFile file)
         {
             var userId = _userManager.GetUserId(User);

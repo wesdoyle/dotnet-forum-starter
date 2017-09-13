@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Forum.Web.Controllers
 {
@@ -129,30 +130,30 @@ namespace Forum.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddForum(AddForumModel model)
         {
+            var blockBlob = PostForumImage(model.ImageUpload);
+
             var forum = new Data.Models.Forum()
             {
                 Title = model.Title,
                 Description = model.Description,
                 Created = DateTime.Now,
+                ImageUrl = blockBlob.Uri.AbsoluteUri
             };
 
-            await PostForumImage(model.ImageUpload);
             await _forumService.Add(forum);
             return RedirectToAction("Index", "Forum");
         }
 
-        public async Task PostForumImage(IFormFile file)
+        public CloudBlockBlob PostForumImage(IFormFile file)
         {
             var connectionString = _configuration.GetConnectionString("AzureStorageAccountConnectionString");
             var container = _uploadService.GetBlobContainer(connectionString);
-
             var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
-            var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
-
+            var filename = Path.Combine(parsedContentDisposition.FileName.ToString().Trim('"'));
             var blockBlob = container.GetBlockBlobReference(filename);
+            blockBlob.UploadFromStreamAsync(file.OpenReadStream());
 
-            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
-            await _forumService.SetForumImage(forumId, blockBlob.Uri);
+            return blockBlob;
         }
     }
 }
