@@ -15,5 +15,6 @@ namespace Forum.Data
         Post GetLatestPost(int forumId);
         IEnumerable<ApplicationUser> GetActiveUsers(int forumId);
         bool HasRecentPost(int id);
+        Task Add(Models.Forum forum);
     }
 }

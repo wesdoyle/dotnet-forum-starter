@@ -107,5 +107,21 @@ namespace Forum.Web.Controllers
 
             return View(model);
         }
+
+        public IActionResult Add()
+        {
+            var model = new AddForumModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddForum(AddForumModel model)
+        {
+            var forum = new Data.Models.Forum
+            {
+                
+            }
+            _forumService.Add();
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Forum.Data;
 using Forum.Data.Models;
-using forum_app_demo.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -89,6 +88,12 @@ namespace Forum.Service
             const int hoursAgo = 12;
             var window = DateTime.Now.AddHours(-hoursAgo);
             return GetById(id).Posts.Any(post => post.Created >= window);
+        }
+
+        public async Task Add(Data.Models.Forum forum)
+        {
+            _context.Add(forum);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateForumDescription(int id, string description)
