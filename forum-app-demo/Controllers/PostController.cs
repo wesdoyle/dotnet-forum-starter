@@ -16,12 +16,14 @@ namespace Forum.Web.Controllers
         private readonly IPost _postService;
         private readonly IForum _forumService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationUser _userService;
 
         public PostController(IPost postService, IForum forumService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
             _forumService = forumService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public IActionResult Index(int id)
@@ -46,7 +48,7 @@ namespace Forum.Web.Controllers
             return View(model);
         }
 
-        private IEnumerable<PostReplyModel> GetPostReplies(Post post)
+        private static IEnumerable<PostReplyModel> GetPostReplies(Post post)
         {
             return post.Replies.Select(reply => new PostReplyModel
             {
@@ -83,7 +85,10 @@ namespace Forum.Web.Controllers
             var userId = _userManager.GetUserId(User);
             var user = await _userManager.FindByIdAsync(userId);
             var post = BuildPost(model, user);
+
             await _postService.Add(post);
+            await _userService.BumpRating(userId, typeof(Post));
+
             return RedirectToAction("Index", "Forum", model.ForumId);
         }
 

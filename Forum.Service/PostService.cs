@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using Forum.Data.Models;
 using System.Threading.Tasks;
-using forum_app_demo.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
