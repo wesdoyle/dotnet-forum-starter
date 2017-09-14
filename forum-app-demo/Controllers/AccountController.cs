@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using forum_app_demo.Controllers;
 using forum_app_demo.Models.AccountViewModels;
 using forum_app_demo.Services;
 using Forum.Data.Models;

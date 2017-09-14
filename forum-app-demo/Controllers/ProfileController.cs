@@ -67,5 +67,11 @@ namespace Forum.Web.Controllers
 
             return RedirectToAction("Detail", "Profile", new { id = userId });
         }
+
+        public IActionResult Index()
+        {
+            var model = new ProfileListModel;
+            return View(model);
+        }
     }
 }
