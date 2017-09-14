@@ -12,7 +12,7 @@ namespace Forum.Web.Controllers
     {
         private readonly IForum _forumService;
         private readonly IPost _postService;
-        private IApplicationUser _userService;
+        private readonly IApplicationUser _userService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public ReplyController(IForum forumService, IPost postService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
@@ -65,6 +65,8 @@ namespace Forum.Web.Controllers
 
             var reply = BuildReply(model, user);
             await _postService.AddReply(reply);
+            await _userService.BumpRating(userId, GetType());
+
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
 
