@@ -6,6 +6,7 @@
             <span class="postIndexTitle">
                 @Model.Title
             </span>
+            <span id="headingBtn"><a asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId" class="btn btn-back">Back to @Model.ForumName</a></span>
         </div>
     </div>
     <div class="row" id="postIndexContent">
@@ -41,7 +42,7 @@
                     <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl); background-size: 100%;"></div>
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         <strong>@reply.AuthorName</strong>
-                    </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
+                    </a> (<span class="postAuthorRating">@reply.AuthorRating</span>) <br />
                     @if (@reply.IsAuthorAdmin)
                     {
                         <div class="isAdmin profileLabel smaller">Admin</div>

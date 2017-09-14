@@ -42,8 +42,8 @@
     padding: 8px 0 24px 24px;
 }
 
-.postHeader{
-    background-color: rgba(0,130,230,0.9);
+.postHeader {
+    background-color: #212121;
     padding: 8px 0 24px 24px;
 }
 
@@ -346,7 +346,7 @@
 }
 
 .btn-back {
-    background-color: #FF9800 !important;
+    background-color: #555;
     color: #fff !important;
     transition: ease-in 0.1s;
     border-radius: 0px !important;
@@ -354,8 +354,7 @@
 
 .btn-back:hover {
     transition: ease-in 0.1s;
-    background-color: #FFA726 !important;
-    color: #fff !important;
+    background-color: #1E88E5 !important;
 }
 
 .hasRecentPost {
