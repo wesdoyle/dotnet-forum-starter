@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using forum_app_demo.Services;
+using Forum.Data;
+using Forum.Data.Models;
+using Forum.Service;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using forum_app_demo.Data;
-using forum_app_demo.Services;
-using Forum.Data;
-using Forum.Service;
-using Forum.Data.Models;
 
-namespace forum_app_demo
+namespace Forum.Web
 {
     public class Startup
     {

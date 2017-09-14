@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-forum_app_demo-ACC56022-E729-4101-BEAC-EEEF547F40B7</UserSecretsId>
+    <Configurations>Debug;Release;Production;Development</Configurations>
   </PropertyGroup>
 
 
