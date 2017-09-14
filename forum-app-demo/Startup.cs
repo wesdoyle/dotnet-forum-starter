@@ -33,12 +33,10 @@ namespace Forum.Web
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
             services.AddScoped<IPostReply, PostReplyService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
-
             services.AddSingleton<IUpload, UploadService>();
             services.AddSingleton(Configuration);
             services.AddMvc();
