@@ -520,3 +520,8 @@
     display: inline-block;
 }
 
+.userProfilePic {
+    height: 140px;
+    width: 140px;
+}
+

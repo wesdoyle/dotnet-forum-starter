@@ -71,6 +71,7 @@ namespace Forum.Web.Controllers
         public IActionResult Index()
         {
             var model = new ProfileListModel;
+            _userService.GetAll().OrderByDescending(User => User.Rating);
             return View(model);
         }
     }

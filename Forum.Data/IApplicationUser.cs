@@ -1,12 +1,14 @@
 ﻿using Forum.Data.Models;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace Forum.Data
 {
     public interface IApplicationUser
     {
         ApplicationUser GetById(string id);
+        IEnumerable<IApplicationUser> GetAll();
 
         Task IncrementRating(string id);
         Task Add(ApplicationUser user);

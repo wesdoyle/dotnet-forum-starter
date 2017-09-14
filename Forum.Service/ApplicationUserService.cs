@@ -1,5 +1,6 @@
 ﻿using Forum.Data;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Forum.Data.Models;
 using System.Linq;
@@ -29,6 +30,11 @@ namespace Forum.Service
         public ApplicationUser GetByName(string name)
         {
             return _context.ApplicationUsers.FirstOrDefault(user => user.UserName == name);
+        }
+
+        public IEnumerable<ApplicationUser> GetAll()
+        {
+            return _context.ApplicationUsers;
         }
 
         public ApplicationUser GetById(string id)
