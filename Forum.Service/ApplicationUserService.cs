@@ -63,12 +63,16 @@ namespace Forum.Service
         private static int GetIncrement(Type type)
         {
             var bump = 0;
-                
-            if(type == typeof(Post))
-                bump = 3;
 
-            else if (type == typeof(PostReply))
+            if (type == typeof(Post))
+            {
+                bump = 3;
+            }
+
+            if (type == typeof(PostReply))
+            {
                 bump = 2;
+            }
 
             return bump;
         }

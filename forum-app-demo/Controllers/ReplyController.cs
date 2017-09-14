@@ -65,7 +65,7 @@ namespace Forum.Web.Controllers
 
             var reply = BuildReply(model, user);
             await _postService.AddReply(reply);
-            await _userService.BumpRating(userId, GetType());
+            await _userService.BumpRating(userId, typeof(PostReply));
 
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }

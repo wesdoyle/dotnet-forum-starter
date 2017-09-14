@@ -87,7 +87,7 @@ namespace Forum.Web.Controllers
             var post = BuildPost(model, user);
 
             await _postService.Add(post);
-            await _userService.BumpRating(userId, GetType());
+            await _userService.BumpRating(userId, typeof(Post));
 
             return RedirectToAction("Index", "Forum", model.ForumId);
         }
