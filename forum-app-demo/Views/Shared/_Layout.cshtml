@@ -1,9 +1,10 @@
 ﻿@inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
 @inject SignInManager<Forum.Data.Models.ApplicationUser> SignInManager
 @{
-
-    var user = UserManager.FindByNameAsync(User.Identity.Name);
-    var isAdmin = user.Result.IsAdmin;
+    if (SignInManager.IsSignedIn(User))
+    {
+        var user = UserManager.FindByNameAsync(User.Identity.Name);
+    }
 }
 
 <!DOCTYPE html>
@@ -44,7 +45,7 @@
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Profile</li>
                                 <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
-                                @if (isAdmin)
+                                @if (User.IsInRole("Admin"))
                                 {
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Admin</li>
