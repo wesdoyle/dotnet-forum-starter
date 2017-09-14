@@ -96,7 +96,7 @@ namespace Forum.Service
 
         public IEnumerable<Post> GetLatestPosts(int count)
         {
-            var allPosts = GetAll();
+            var allPosts = GetAll().OrderByDescending(post => post.Created);
             return allPosts.Take(count);
         }
 

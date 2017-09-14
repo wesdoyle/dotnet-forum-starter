@@ -27,7 +27,6 @@ namespace Forum.Web.Controllers
         {
             var post = _postService.GetById(id);
             var forum = _forumService.GetById(post.Forum.Id);
-            var replyingUser = GetReplyingUser();
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
                  
             var model = new PostReplyModel
@@ -50,11 +49,6 @@ namespace Forum.Web.Controllers
             };
 
             return View(model);
-        }
-
-        private async Task<ApplicationUser> GetReplyingUser()
-        {
-            return await _userManager.GetUserAsync(User);
         }
 
         [HttpPost]
