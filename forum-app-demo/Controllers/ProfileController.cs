@@ -5,6 +5,7 @@ using Forum.Web.Models.ApplicationUser;
 using Forum.Data;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Forum.Service;
@@ -36,7 +37,6 @@ namespace Forum.Web.Controllers
                 UserId = user.Id,
                 Username = user.UserName,
                 UserRating = user.Rating.ToString(),
-                Description = user.UserDescription,
                 Email = user.Email,
                 ProfileImageUrl = user.ProfileImageUrl
             };
@@ -70,8 +70,21 @@ namespace Forum.Web.Controllers
 
         public IActionResult Index()
         {
-            var model = new ProfileListModel;
-            _userService.GetAll().OrderByDescending(User => User.Rating);
+            var profiles = _userService.GetAll()
+                .OrderByDescending(user => user.Rating)
+                .Select(u => new ProfileModel
+                {
+                    Email = u.Email,
+                    ProfileImageUrl = u.ProfileImageUrl,
+                    UserRating = u.Rating.ToString(),
+                    DateJoined = u.MemberSince
+                });
+
+            var model = new ProfileListModel
+            {
+                Profiles = profiles
+            };
+
             return View(model);
         }
     }

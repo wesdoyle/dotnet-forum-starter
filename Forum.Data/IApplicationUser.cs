@@ -8,7 +8,7 @@ namespace Forum.Data
     public interface IApplicationUser
     {
         ApplicationUser GetById(string id);
-        IEnumerable<IApplicationUser> GetAll();
+        IEnumerable<ApplicationUser> GetAll();
 
         Task IncrementRating(string id);
         Task Add(ApplicationUser user);
