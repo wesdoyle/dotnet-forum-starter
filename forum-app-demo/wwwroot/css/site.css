@@ -424,7 +424,7 @@
     background-color: #ddd;
 }
 
-#userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating {
+#userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating, #userActiveLabel {
     display: block;
     color: #444;
     font-family: 'Roboto';
@@ -525,3 +525,6 @@
     width: 140px;
 }
 
+.inactiveUser {
+    font-style: italic;
+}

@@ -33,13 +33,25 @@
                             <div class="userProfilePic" style="background-image: url(@profile.ProfileImageUrl); background-size:100%"></div>
                         </td>
                         <td>
+                            @if (profile.IsActive)
+                            {
+                                <span>Active</span>
+                            }
+                            else
+                            {
+                                <span class="inactiveUser">Inactive</span>
+                            }
+                        </td>
+                        <td>
                             @profile.DateJoined
                         </td>
                         <td>
                             @profile.Email
                         </td>
                         <td>
-                            @profile.Username
+                            <a asp-controller="Profile" asp-action="Detail" , asp-route-id="@profile.UserId">
+                                @profile.Username
+                            </a>
                         </td>
                         <td>
                             @profile.UserRating

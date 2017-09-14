@@ -77,7 +77,8 @@ namespace Forum.Web.Controllers
                     Email = u.Email,
                     ProfileImageUrl = u.ProfileImageUrl,
                     UserRating = u.Rating.ToString(),
-                    DateJoined = u.MemberSince
+                    DateJoined = u.MemberSince,
+                    IsActive = u.IsActive
                 });
 
             var model = new ProfileListModel
@@ -86,6 +87,13 @@ namespace Forum.Web.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult Deactivate(string userId)
+        {
+            var user = _userService.GetById(userId);
+            _userService.Deactivate(user);
+            return RedirectToAction("Index", "Profile");
         }
     }
 }

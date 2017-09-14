@@ -12,6 +12,14 @@
         <div class="sectionHeading noBorder">
             User Profile
         </div>
+        @if (isAdmin)
+        {
+            <form method="post" asp-controller="Profile" asp-action="Deactivate" asp-route-id="@Model.UserId">
+                <div>
+                    <button class="btn btn-danger" active="@Model.IsActive">Deactivate User</button>
+                </div>
+            </form>
+        }
     </div>
     @if (Context.User.Identity.IsAuthenticated)
     {
@@ -39,6 +47,16 @@
                 <span id="userRating">Current Rating: @Model.UserRating</span>
                 <span id="userEmailLabel">Email: @Model.Email</span>
                 <span id="userCreatedLabel">Member Since: @Model.DateJoined</span>
+                <span id="userActiveLabel">Status: 
+                    @if (!@Model.IsActive)
+                    {
+                        <span class="inactiveUser">Inactive</span>
+                    }
+                    else
+                    {
+                        <span>Active</span>
+                    }
+                </span>
             </div>
         </div>
     }
