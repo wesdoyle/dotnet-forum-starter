@@ -10,6 +10,7 @@ namespace Forum.Data.Models
         public string ProfileImageUrl { get; set; }
         public int Rating { get; set; }
         public bool IsAdmin { get; set; }
+        public bool IsActive { get; set; }
         public DateTime MemberSince { get; set; }
     }
 }

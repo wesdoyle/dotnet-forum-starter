@@ -12,7 +12,7 @@ namespace Forum.Data
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Forum.Data.Models.Forum> Forums { get; set; }
+        public DbSet<Models.Forum> Forums { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostReply> PostReplies { get; set; }
         public DbSet<PrivateMessage> PrivateMessages { get; set; }
