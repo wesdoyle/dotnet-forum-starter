@@ -9,8 +9,8 @@ C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\bin\Debug\netc
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\bin\Debug\netcoreapp2.0\Forum.Service.pdb
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\Forum.Web.csprojResolveAssemblyReference.cache
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\Forum.Web.csproj.CoreCompileInputs.cache
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\Forum.Web.AssemblyInfoInputs.cache
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\Forum.Web.AssemblyInfo.cs
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\Forum.Web.dll
 C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\Forum.Web.pdb
-C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

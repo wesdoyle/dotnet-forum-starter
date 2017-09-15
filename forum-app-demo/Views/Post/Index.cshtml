@@ -9,6 +9,7 @@
             <span id="headingBtn"><a asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId" class="btn btn-back">Back to @Model.ForumName</a></span>
         </div>
     </div>
+
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
             <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl); background-size: 100%;"></div>
@@ -27,6 +28,8 @@
             </div>
         </div>
     </div>
+
+    <div class="row" id ="replyDivider"></div>
     @if (Context.User.Identity.IsAuthenticated)
     {
         <div class="row" id="replyRow">

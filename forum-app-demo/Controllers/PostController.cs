@@ -16,15 +16,17 @@ namespace Forum.Web.Controllers
     {
         private readonly IPost _postService;
         private readonly IForum _forumService;
+        private readonly IPostFormatter _postFormatter;
         private readonly IApplicationUser _userService;
 
         private static UserManager<ApplicationUser> _userManager;
 
-        public PostController(IPost postService, IForum forumService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
+        public PostController(IPost postService, IForum forumService, IApplicationUser userService, UserManager<ApplicationUser> userManager, IPostFormatter postFormatter)
         {
             _postService = postService;
             _forumService = forumService;
             _userManager = userManager;
+            _postFormatter = postFormatter;
             _userService = userService;
         }
 
@@ -42,7 +44,7 @@ namespace Forum.Web.Controllers
                 AuthorRating = post.User.Rating,
                 IsAuthorAdmin = IsAuthorAdmin(post.User),
                 Date = post.Created,
-                PostContent = PostFormatter.Prettify(post.Content),
+                PostContent = _postFormatter.Prettify(post.Content),
                 Replies = replies,
                 ForumId = post.Forum.Id,
                 ForumName = post.Forum.Title
@@ -51,7 +53,7 @@ namespace Forum.Web.Controllers
             return View(model);
         }
 
-        private static IEnumerable<PostReplyModel> GetPostReplies(Post post)
+        private IEnumerable<PostReplyModel> GetPostReplies(Post post)
         {
 
 
@@ -63,7 +65,7 @@ namespace Forum.Web.Controllers
                 AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,
                 Date = reply.Created,
-                ReplyContent = PostFormatter.Prettify(reply.Content),
+                ReplyContent = _postFormatter.Prettify(reply.Content),
                 IsAuthorAdmin = IsAuthorAdmin(reply.User) 
             });
         }
