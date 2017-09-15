@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Forum.Web.Helpers;
 
 namespace Forum.Web.Controllers
 {
@@ -15,8 +16,9 @@ namespace Forum.Web.Controllers
     {
         private readonly IPost _postService;
         private readonly IForum _forumService;
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationUser _userService;
+
+        private static UserManager<ApplicationUser> _userManager;
 
         public PostController(IPost postService, IForum forumService, IApplicationUser userService, UserManager<ApplicationUser> userManager)
         {
@@ -31,8 +33,6 @@ namespace Forum.Web.Controllers
             var post = _postService.GetById(id);
             var replies = GetPostReplies(post).OrderBy(reply=>reply.Date);
 
-            var postAuthorRoles = _userManager.GetRolesAsync(post.User).Result.ToList();
-
             var model = new PostIndexModel {
                 Id = post.Id,
                 Title = post.Title,
@@ -40,9 +40,9 @@ namespace Forum.Web.Controllers
                 AuthorName = post.User.UserName,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
-                IsAuthorAdmin = postAuthorRoles.Contains("Admin"),
+                IsAuthorAdmin = IsAuthorAdmin(post.User),
                 Date = post.Created,
-                PostContent = post.Content,
+                PostContent = PostFormatter.Prettify(post.Content),
                 Replies = replies,
                 ForumId = post.Forum.Id,
                 ForumName = post.Forum.Title
@@ -53,6 +53,8 @@ namespace Forum.Web.Controllers
 
         private static IEnumerable<PostReplyModel> GetPostReplies(Post post)
         {
+
+
             return post.Replies.Select(reply => new PostReplyModel
             {
                 Id = reply.Id,
@@ -61,9 +63,15 @@ namespace Forum.Web.Controllers
                 AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,
                 Date = reply.Created,
-                ReplyContent = reply.Content,
-                IsAuthorAdmin = reply.User.IsAdmin
+                ReplyContent = PostFormatter.Prettify(reply.Content),
+                IsAuthorAdmin = IsAuthorAdmin(reply.User) 
             });
+        }
+
+        public static bool IsAuthorAdmin(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user)
+                .Result.Contains("Admin");
         }
 
         public IActionResult Create(int id)

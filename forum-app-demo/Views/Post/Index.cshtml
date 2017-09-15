@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-9 postContentContainer">
             <div class="postContent">
-                @Model.PostContent
+                @Html.Raw(@Model.PostContent)
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-9 replyContentContainer">
                     <div class="postContent">
-                        @reply.ReplyContent
+                        @Html.Raw(@reply.ReplyContent)
                     </div>
                 </div>
             </div>
