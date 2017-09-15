@@ -1,6 +1,4 @@
-using System;
-
-namespace forum_app_demo.Models
+namespace Forum.Data.Models
 {
     public class ErrorViewModel
     {

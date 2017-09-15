@@ -2,6 +2,7 @@
 using System.Linq;
 using forum_app_demo.Models;
 using Forum.Data;
+using Forum.Data.Models;
 using Forum.Web.Models.Home;
 using Forum.Web.Models.Post;
 using Microsoft.AspNetCore.Mvc;
