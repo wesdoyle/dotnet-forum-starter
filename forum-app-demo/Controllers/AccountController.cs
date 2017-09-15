@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using forum_app_demo.Models.AccountViewModels;
 using forum_app_demo.Services;
 using Forum.Data.Models;
 using Forum.Web.Extensions;
+using Forum.Web.Models.AccountViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

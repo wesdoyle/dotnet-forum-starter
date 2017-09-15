@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Forum.Web.Models.Post
+﻿namespace Forum.Web.Models.Post
 {
     public class ForumListingPostModel
     {
