@@ -3,8 +3,8 @@
 @inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
 
 @{
-    var user = UserManager.FindByNameAsync(User.Identity.Name);
-    var isAdmin = user.Result.IsAdmin;
+//var user = UserManager.FindByNameAsync(User.Identity.Name);
+//var isAdmin = user.Result.IsAdmin;
 }
 
 <div class="container body-content">
@@ -12,7 +12,7 @@
         <div class="sectionHeading noBorder">
             User Profile
         </div>
-        @if (isAdmin)
+        @if (User.IsInRole("Admin"))
         {
             <form method="post" asp-controller="Profile" asp-action="Deactivate" asp-route-id="@Model.UserId">
                 <div>
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-8">
                 <span id="userName">@Model.Username</span> 
-                @if (isAdmin)
+                @if (User.IsInRole("Admin"))
                 {
                     <span class="isAdmin">Admin</span>
                 }

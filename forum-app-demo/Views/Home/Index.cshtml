@@ -24,7 +24,19 @@
                                 </a>
                             </div>
                             <div class="postSubTitle">
-                                <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.Author</a></span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
+                                @if (@post.RepliesCount == 1)
+                                {
+                                    <span>@post.RepliesCount Reply</span>
+                                }
+                                @if (@post.RepliesCount == 0)
+                                {
+                                    <span>No Replies</span>
+                                }
+                                else
+                                {
+                                    <span>@post.RepliesCount Replies</span>
+                                }
+                                | <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.Author</a></span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
                             </div>
                         </td>
                         <td></td>

@@ -22,9 +22,11 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task Deactivate(ApplicationUser user)
+        public async Task Deactivate(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            user.IsActive = false;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
         }
 
         public ApplicationUser GetByName(string name)

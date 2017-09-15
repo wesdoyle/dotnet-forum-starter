@@ -29,8 +29,9 @@ namespace Forum.Web.Controllers
         public IActionResult Index(int id)
         {
             var post = _postService.GetById(id);
-
             var replies = GetPostReplies(post).OrderByDescending(reply=>reply.Date);
+
+            var postAuthorRoles = _userManager.GetRolesAsync(post.User).Result.ToList();
 
             var model = new PostIndexModel {
                 Id = post.Id,
@@ -39,7 +40,7 @@ namespace Forum.Web.Controllers
                 AuthorName = post.User.UserName,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
-                IsAuthorAdmin = post.User.IsAdmin,
+                IsAuthorAdmin = postAuthorRoles.Contains("Admin"),
                 Date = post.Created,
                 PostContent = post.Content,
                 Replies = replies,

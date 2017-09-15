@@ -217,7 +217,7 @@ namespace Forum.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, MemberSince = DateTime.Now};
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, MemberSince = DateTime.Now, IsActive = true };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

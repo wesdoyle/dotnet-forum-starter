@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Forum.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 
 namespace Forum.Web.Controllers
@@ -28,6 +29,7 @@ namespace Forum.Web.Controllers
             _configuration = configuration;
         }
 
+        [Authorize]
         public IActionResult Detail(string id)
         {
             var user = _userService.GetById(id);
@@ -38,7 +40,9 @@ namespace Forum.Web.Controllers
                 Username = user.UserName,
                 UserRating = user.Rating.ToString(),
                 Email = user.Email,
-                ProfileImageUrl = user.ProfileImageUrl
+                ProfileImageUrl = user.ProfileImageUrl,
+                DateJoined = user.MemberSince,
+                IsActive = user.IsActive
             };
 
             return View(model);
