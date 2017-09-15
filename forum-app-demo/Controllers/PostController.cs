@@ -29,7 +29,7 @@ namespace Forum.Web.Controllers
         public IActionResult Index(int id)
         {
             var post = _postService.GetById(id);
-            var replies = GetPostReplies(post).OrderByDescending(reply=>reply.Date);
+            var replies = GetPostReplies(post).OrderBy(reply=>reply.Date);
 
             var postAuthorRoles = _userManager.GetRolesAsync(post.User).Result.ToList();
 
