@@ -3,6 +3,14 @@
     padding-bottom: 20px;
     background-color: #eee;
     background-attachment: fixed;
+    background-image: url("/images/theme/bg-01.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navbar {
+    box-shadow: 0 5px 4px -6px #000;
 }
 
 .material-icons.md-48 {
@@ -64,20 +72,20 @@
 }
 
 .sectionInfo{
+    height: 400px;
     background-color: white;
 }
 
-.frontPageImage{
-    height:410px;
-    background-image: url("../images/theme/lookout.png");
-    background-size: 100%;
+.frontPageSplash {
+    background-image: url("../images/theme/front-splash.png");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right;
 }
 
 .frontPageLearn{
     font-family: 'Roboto';
     padding: 12px 0 0 32px;
+    height: 360px;
 }
 
 .sectionDescription {
@@ -253,7 +261,7 @@
     background-color: #fff;
     padding: 16px 0 24px 0;
     margin: auto;
-    width: 60%;
+    width: 30%;
 }
 
 #registerFormWrapper{
