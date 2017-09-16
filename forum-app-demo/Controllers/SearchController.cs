@@ -48,7 +48,7 @@ namespace Forum.Web.Controllers
         [HttpPost]
         public IActionResult Search(string searchQuery)
         {
-            return RedirectToAction("Results", searchQuery);
+            return RedirectToAction("Results", new {searchQuery});
         }
 
         private static ForumListingModel BuildForumListing(Data.Models.Forum forum)

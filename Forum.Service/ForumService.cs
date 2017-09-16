@@ -59,6 +59,8 @@ namespace Forum.Service
                 .Include(f=>f.Posts)
                 .ThenInclude(f=>f.Replies)
                 .ThenInclude(f=>f.User)
+                .Include(f=>f.Posts)
+                .ThenInclude(p=>p.Forum)
                 .FirstOrDefault();
 
             if(forum.Posts == null)
@@ -114,6 +116,7 @@ namespace Forum.Service
             if (forumId == 0) return _postService.GetFilteredPosts(searchQuery);
 
             var forum = GetById(forumId);
+
             return string.IsNullOrEmpty(searchQuery)
                 ? forum.Posts
                 : forum.Posts.Where(post
