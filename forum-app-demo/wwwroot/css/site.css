@@ -578,8 +578,11 @@
     transition: ease-in 0.2s;
 }
 
-.homeSearch:focus{
-    transition: ease-in 0.2s;
-    color: #66BB6A;
-    background-color: rgba(0, 0, 0, 0.7);
-}
+    .homeSearch:focus {
+        border: none !important;
+        outline: none !important;
+        transition: ease-in 0.2s;
+        color: #03A9F4;
+        background-color: rgba(0, 0, 0, 0.7);
+        box-shadow: 0 5px 4px -6px #000;
+    }
