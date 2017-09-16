@@ -565,5 +565,21 @@
     font: inherit;
 }
 
-.searchForm {
+.homeSearch {
+    width: 100%;
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border: 0px;
+    height: 2.3em;
+    font-size: 2.1em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+    transition: ease-in 0.2s;
+}
+
+.homeSearch:focus{
+    transition: ease-in 0.2s;
+    color: #66BB6A;
+    background-color: rgba(0, 0, 0, 0.7);
 }
