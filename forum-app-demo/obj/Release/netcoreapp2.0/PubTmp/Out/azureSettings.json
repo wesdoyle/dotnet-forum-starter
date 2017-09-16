@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "AzureStorageAccountConnectionString": "DefaultEndpointsProtocol=https;AccountName=lambdaforumsdemo;AccountKey=wG83gncWOPwyEkldLBr+0ajHo1PWz1NJPxVD7os3yhzEfb/OG0Pm5PDkRW89li9McLfclumKjO4LyHFvcYalIA==;EndpointSuffix=core.windows.net"
+  }
+}

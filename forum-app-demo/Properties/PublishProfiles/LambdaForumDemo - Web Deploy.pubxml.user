@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsh+BXoHSAE2zacjuqNiGlAAAAAACAAAAAAAQZgAAAAEAACAAAADl5OWLts6f0iX4FIEJu6/I6fY8qsFw1re6iZ3MVaPMygAAAAAOgAAAAAIAACAAAAACjDLGuyBiov2Bk2E74xc5GXX1mM5zXY1XhIjAYoigwYAAAABOo5VhZxe4oJK6ZoxQU/23yVxg39125WBwYsvKewKgliJQS0VX8LzNqsrzg1angHuNsT5gLhhRq73oMLTF3o4NOWu56TTtOEBsScNdtQBU5buC4oLGzzTUjYh40kUNnmKorf1dbhZYFppa+Aej6izGTLW2gNaStiBBaqT1lio1j0AAAAA4EduZDq7Fu/WmiKJiKrBx8eT2IyVtX6z5frmGEb4IjrtNzUR2dW8WjB1znN2XlKHGRjH/fCYgV99MD31UZbue</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="Forum.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:lamdbaforums.database.windows.net,1433;Initial Catalog=LambdaForums.Demo;User Id=null@lamdbaforums.database.windows.net;Password=FieldMtso0i9u8y7!;</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>
