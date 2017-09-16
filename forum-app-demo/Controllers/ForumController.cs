@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Forum.Data;
+using Forum.Data.Models;
 using Forum.Service;
 using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
@@ -85,19 +87,10 @@ namespace Forum.Web.Controllers
             });
         }
 
-        public IActionResult Topic(int forumId, TopicResultModel topicModel)
+        public IActionResult Topic(int forumId, TopicResultModel topicModel = null)
         {
-            var forum = topicModel.Forum;
-
-            if (topicModel != null)
-            {
-                var posts = _forumService.FilteredPosts(forumId, topicModel.SearchQuery);
-            }
-
-            else
-            {
-                // Get All Posts
-            }
+            var forum = _forumService.GetById(forumId);
+            var posts = _forumService.GetFilteredPosts(forumId, topicModel?.SearchQuery).ToList();
 
             var postListings = posts.Select(post => new ForumListingPostModel
             {
@@ -119,7 +112,7 @@ namespace Forum.Web.Controllers
             var forumListing = new ForumListingModel
             {
                 Id = forum.Id,
-                Name = forum.Name,
+                Name = forum.Title,
                 Description = forum.Description,
                 AllPosts = postListings,
                 ImageUrl = forum.ImageUrl,
@@ -187,7 +180,7 @@ namespace Forum.Web.Controllers
         [HttpPost]
         public IActionResult Search(TopicResultModel model)
         {
-            _forumService.FilteredPosts(model.ForumId, model.SearchQuery);
+            _forumService.GetFilteredPosts(model.ForumId, model.SearchQuery);
             return RedirectToAction("Topic", model);
         }
     }

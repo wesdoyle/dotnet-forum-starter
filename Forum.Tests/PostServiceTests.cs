@@ -69,7 +69,7 @@ namespace Forum.Tests
         }
 
         [Test]
-        public async Task Get_All_Posts_Returns_All_Posts()
+        public void Get_All_Posts_Returns_All_Posts()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(databaseName: "Get_Post_By_Id_Db").Options;
@@ -90,16 +90,40 @@ namespace Forum.Tests
             }
         }
 
-        //[Test]
-        //public async Task Get_All_Posts_Returns_All_Posts()
-        //{
-        //    Assert.Fail("Finish Test");
-        //}
+        [Test]
+        public async Task Checking_Reply_Count_Returns_Number_Of_Replies()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase(databaseName: "Searh_Database").Options;
 
-        //[Test]
-        //public async Task Get_All_Posts_Returns_All_Posts()
-        //{
-        //    Assert.Fail("Finish Test");
-        //}
+            using (var ctx = new ApplicationDbContext(options))
+            {
+                ctx.Posts.Add(new Post
+                {
+                    Id = 21341,
+                });
+
+                ctx.SaveChanges();
+            }
+
+            using (var ctx = new ApplicationDbContext(options))
+            {
+                var postService = new PostService(ctx);
+                var post = postService.GetById(21341);
+
+                await postService.AddReply(new PostReply
+                {
+                    Post = post,
+                    Content = "Here's a post reply."
+                });
+            }
+
+            using (var ctx = new ApplicationDbContext(options))
+            {
+                var postService = new PostService(ctx);
+                var replyCount = postService.GetReplyCount(21341);
+                Assert.AreEqual(replyCount, 1);
+            }
+        }
     }
 }
