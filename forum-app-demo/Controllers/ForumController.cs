@@ -85,10 +85,19 @@ namespace Forum.Web.Controllers
             });
         }
 
-        public IActionResult Topic(int id, ForumSearchModel search)
+        public IActionResult Topic(int forumId, TopicResultModel topicModel)
         {
-            var forum = _forumService.GetById(id);
-            var posts = forum.Posts;
+            var forum = topicModel.Forum;
+
+            if (topicModel != null)
+            {
+                var posts = _forumService.FilteredPosts(forumId, topicModel.SearchQuery);
+            }
+
+            else
+            {
+                // Get All Posts
+            }
 
             var postListings = posts.Select(post => new ForumListingPostModel
             {
@@ -107,16 +116,22 @@ namespace Forum.Web.Controllers
 
             var count = postListings.Count();
 
-            var model = new ForumListingModel
+            var forumListing = new ForumListingModel
             {
                 Id = forum.Id,
-                Name = forum.Title,
+                Name = forum.Name,
                 Description = forum.Description,
                 AllPosts = postListings,
                 ImageUrl = forum.ImageUrl,
                 LatestPost = latestPost,
                 NumberOfPosts = count,
-                NumberOfUsers = _forumService.GetActiveUsers(id).Count()
+                NumberOfUsers = _forumService.GetActiveUsers(topicModel.ForumId).Count()
+            };
+
+            var model = new TopicResultModel 
+            {
+                Forum = forumListing,
+                SearchQuery = topicModel.SearchQuery 
             };
 
             return View(model);
@@ -170,9 +185,9 @@ namespace Forum.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Search(ForumListingModel model)
+        public IActionResult Search(TopicResultModel model)
         {
-            _forumService.FilteredPosts(model.Id, model.Filter.SearchQuery);
+            _forumService.FilteredPosts(model.ForumId, model.SearchQuery);
             return RedirectToAction("Topic", model);
         }
     }

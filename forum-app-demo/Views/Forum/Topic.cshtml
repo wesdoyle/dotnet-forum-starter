@@ -1,26 +1,26 @@
-﻿@model Forum.Web.Models.Forum.ForumListingModel
+﻿@model Forum.Web.Models.Forum.TopicResultModel
 
 <div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">
-            <span id="forumName">@Model.Name Forum</span>
+            <span id="forumName">@Model.Forum.Name Forum</span>
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm"> 
-                    <input asp-for="Filter.SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
+                    <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
                     <button type="submit" class="btn buttonSearch">
                         <i class="material-icons">search</i>
                     </button>
                 </div>
-                <input asp-for="Id" type="hidden" />
+                <input asp-for="ForumId" type="hidden" />
             </form>
             @if (Context.User.Identity.IsAuthenticated)
             {
-                <span id="headingBtn"><a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newPost">Create Post</a></span>
+                <span id="headingBtn"><a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumId" class="btn btn-newPost">Create Post</a></span>
             }
         </div>
         <div class="sectionDescription">
-            <div class="forumLogo" style="background-image: url(@Model.ImageUrl); background-size:100%"></div>
-            <p>Welcome to the <strong>@Model.Name</strong> forum. Please keep posts friendly and on-topic.</p>
+            <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl); background-size:100%"></div>
+            <p>Welcome to the <strong>@Model.Forum.Name</strong> forum. Please keep posts friendly and on-topic.</p>
             <p>
                 Please read the Forum Guidelines before creating a new post.
                 @if (!Context.User.Identity.IsAuthenticated)
@@ -31,11 +31,11 @@
         </div>
     </div>
     <div class="row" id="forumIndexContent">
-        @if (Model.AllPosts.Any())
+        @if (Model.Forum.AllPosts.Any())
         {
             <table class="table table-hover table-bordered" id="forumIndexTable">
                 <tbody>
-                    @foreach (var post in Model.AllPosts)
+                    @foreach (var post in Model.Forum.AllPosts)
                     {
                         <tr>
                             <td>
@@ -76,8 +76,8 @@
             <div class="noPosts">
                 <i class="material-icons md-72">question_answer</i>
                 <h3>
-                    It looks like there are no @Model.Name posts yet. <br />
-                    Why not <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Id"><span>Create One?</span></a>
+                    It looks like there are no @Model.Forum.Name posts yet. <br />
+                    Why not <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumId"><span>Create One?</span></a>
                 </h3>
             </div>
         }
