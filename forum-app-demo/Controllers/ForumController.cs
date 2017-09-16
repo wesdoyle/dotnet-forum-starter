@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Forum.Data;
-using Forum.Data.Models;
 using Forum.Service;
 using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
@@ -87,10 +85,10 @@ namespace Forum.Web.Controllers
             });
         }
 
-        public IActionResult Topic(int forumId, TopicResultModel topicModel = null)
+        public IActionResult Topic(int id, TopicResultModel topicModel = null)
         {
-            var forum = _forumService.GetById(forumId);
-            var posts = _forumService.GetFilteredPosts(forumId, topicModel?.SearchQuery).ToList();
+            var forum = _forumService.GetById(id);
+            var posts = _forumService.GetFilteredPosts(id, topicModel?.SearchQuery).ToList();
 
             var postListings = posts.Select(post => new ForumListingPostModel
             {
