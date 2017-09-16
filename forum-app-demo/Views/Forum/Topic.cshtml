@@ -31,11 +31,11 @@
         </div>
     </div>
     <div class="row" id="forumIndexContent">
-        @if (Model.Forum.AllPosts.Any())
+        @if (Model.Posts.Any())
         {
             <table class="table table-hover table-bordered" id="forumIndexTable">
                 <tbody>
-                    @foreach (var post in Model.Forum.AllPosts)
+                    @foreach (var post in Model.Posts)
                     {
                         <tr>
                             <td>
@@ -81,6 +81,7 @@
             </div>
 
         }
+
         else if (!@Model.Forum.AllPosts.Any())
         {
             <div class="noPosts">

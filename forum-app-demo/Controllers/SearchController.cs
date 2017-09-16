@@ -4,6 +4,7 @@ using Forum.Data;
 using Forum.Data.Models;
 using Forum.Web.Models.Forum;
 using Forum.Web.Models.Post;
+using Forum.Web.Models.Search;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.Web.Controllers
@@ -34,7 +35,7 @@ namespace Forum.Web.Controllers
                 RepliesCount = post.Replies.Count()
             }).OrderByDescending(post=>post.DatePosted);
 
-            var model = new TopicResultModel
+            var model = new SearchResultModel 
             {
                 EmptySearchResults = noResults,
                 Posts = postListings,
