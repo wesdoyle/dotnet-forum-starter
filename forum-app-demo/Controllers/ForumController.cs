@@ -85,11 +85,12 @@ namespace Forum.Web.Controllers
             });
         }
 
-        public IActionResult Topic(int id)
+        public IActionResult Topic(int id, string searchQuery = "")
         {
             var forum = _forumService.GetById(id);
+            var posts = _forumService.FilteredPosts(id, searchQuery);
 
-            var allPosts = forum.Posts.Select(post => new ForumListingPostModel
+            var postListings = posts.Select(post => new ForumListingPostModel
             {
                 Id = post.Id,
                 Author = post.User.UserName,
@@ -100,18 +101,18 @@ namespace Forum.Web.Controllers
                 RepliesCount = post.Replies.Count()
             }).OrderByDescending(post=>post.DatePosted);
 
-            var latestPost = allPosts
+            var latestPost = postListings 
                 .OrderByDescending(post => post.DatePosted)
                 .FirstOrDefault();
 
-            var count = allPosts.Count();
+            var count = postListings.Count();
 
             var model = new ForumListingModel
             {
                 Id = forum.Id,
                 Name = forum.Title,
                 Description = forum.Description,
-                AllPosts = allPosts,
+                AllPosts = postListings,
                 ImageUrl = forum.ImageUrl,
                 LatestPost = latestPost,
                 NumberOfPosts = count,
@@ -166,6 +167,13 @@ namespace Forum.Web.Controllers
             blockBlob.UploadFromStreamAsync(file.OpenReadStream());
 
             return blockBlob;
+        }
+
+        [HttpPost]
+        public IActionResult Search(ForumListingModel model)
+        {
+            _forumService.FilteredPosts(model.Id, model.SearchQuery);
+            return RedirectToAction("Topic", model);
         }
     }
 }

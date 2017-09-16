@@ -1,4 +1,5 @@
-﻿@inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<Forum.Data.Models.ApplicationUser> UserManager
 @inject SignInManager<Forum.Data.Models.ApplicationUser> SignInManager
 @{
     if (SignInManager.IsSignedIn(User))

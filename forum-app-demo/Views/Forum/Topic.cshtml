@@ -4,6 +4,15 @@
     <div class="row sectionHeader">
         <div class="sectionHeading">
             <span id="forumName">@Model.Name Forum</span>
+            <form asp-controller="Forum" asp-action="Search" method="post">
+                <div class="searchForm"> 
+                    <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
+                    <button type="submit" class="btn buttonSearch">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+                <input asp-for="Id" type="hidden" />
+            </form>
             @if (Context.User.Identity.IsAuthenticated)
             {
                 <span id="headingBtn"><a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newPost">Create Post</a></span>
@@ -74,3 +83,11 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function clearThis(target) {
+            target.value = "";
+        }
+    </script>
+}

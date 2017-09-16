@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Linq;
-using forum_app_demo.Models;
 using Forum.Data;
 using Forum.Data.Models;
 using Forum.Web.Models.Home;

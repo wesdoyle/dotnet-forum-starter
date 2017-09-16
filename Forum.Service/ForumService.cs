@@ -104,6 +104,16 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
+        public IEnumerable<Post> FilteredPosts(int forumId, string searchQuery)
+        {
+            var forum = GetById(forumId);
+
+            return string.IsNullOrEmpty(searchQuery) 
+                ? forum.Posts 
+                : forum.Posts.Where(post
+                    => post.Title.Contains(searchQuery) || post.Title.Contains(searchQuery));
+        }
+
         public async Task UpdateForumDescription(int id, string description)
         {
             var forum = GetById(id);

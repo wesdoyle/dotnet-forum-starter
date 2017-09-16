@@ -15,5 +15,7 @@ namespace Forum.Web.Models.Forum
 
         public ForumListingPostModel LatestPost { get; set; }
         public IEnumerable<ForumListingPostModel> AllPosts { get; set; }
+
+        public string SearchQuery { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Forum.Data;
 using Forum.Data.Models;
 using Forum.Service;
+using Forum.Web.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -38,6 +39,7 @@ namespace Forum.Web
             services.AddScoped<IPostReply, PostReplyService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
             services.AddSingleton<IUpload, UploadService>();
+            services.AddScoped<IPostFormatter, PostFormatter>();
             services.AddSingleton(Configuration);
             services.AddMvc();
         }
