@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
   <IisApp path="C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Production\netcoreapp2.0\PubTmp\Out\" />
-  <dbfullsql path="C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\forum-app-demo\obj\Production\netcoreapp2.0\PubTmp\EFSQLScripts\Forum.Data.ApplicationDbContext.sql" />
 </sitemanifest>

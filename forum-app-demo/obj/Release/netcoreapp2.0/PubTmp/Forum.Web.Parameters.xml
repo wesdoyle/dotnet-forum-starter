@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="LambdaForumDemo" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="ForumWeb20170916043446" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Wes\\Projects\\ProductiveDev\\forum-app-demo\\forum-app-demo\\obj\\Release\\netcoreapp2\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

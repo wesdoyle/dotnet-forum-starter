@@ -6,6 +6,11 @@
     <Configurations>Debug;Release;Production;Development</Configurations>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Remove="Properties\PublishProfiles\LambdaForumDemo - Web Deploy.pubxml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
@@ -21,8 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Forum.Data\Forum.Data.csproj" />
-    <ProjectReference Include="..\Forum.Service\Forum.Service.csproj" />
+    <ProjectReference Include="..\Forum.Data\Forum.Data.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Forum.Service\Forum.Service.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
 </Project>
