@@ -4,6 +4,10 @@
     <div class="row sectionHeader">
         <div class="sectionHeading">
             <span id="forumName">@Model.Forum.Name Forum</span>
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+                <span id="headingBtn"><a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id" class="btn btn-newPost">Create Post</a></span>
+            }
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm"> 
                     <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
@@ -13,10 +17,6 @@
                 </div>
                 <input asp-for="ForumId" type="hidden" />
             </form>
-            @if (Context.User.Identity.IsAuthenticated)
-            {
-                <span id="headingBtn"><a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumId" class="btn btn-newPost">Create Post</a></span>
-            }
         </div>
         <div class="sectionDescription">
             <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl); background-size:100%"></div>
@@ -77,7 +77,7 @@
                 <i class="material-icons md-72">question_answer</i>
                 <h3>
                     It looks like there are no @Model.Forum.Name posts yet. <br />
-                    Why not <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.ForumId"><span>Create One?</span></a>
+                    Why not <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id"><span>Create One?</span></a>
                 </h3>
             </div>
         }

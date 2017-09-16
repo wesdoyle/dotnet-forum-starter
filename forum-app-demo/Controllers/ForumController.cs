@@ -116,13 +116,14 @@ namespace Forum.Web.Controllers
                 ImageUrl = forum.ImageUrl,
                 LatestPost = latestPost,
                 NumberOfPosts = count,
-                NumberOfUsers = _forumService.GetActiveUsers(topicModel.ForumId).Count()
+                NumberOfUsers = _forumService.GetActiveUsers(forum.Id).Count()
             };
 
             var model = new TopicResultModel 
             {
                 Forum = forumListing,
-                SearchQuery = topicModel.SearchQuery 
+                ForumId = forum.Id,
+                SearchQuery = topicModel?.SearchQuery 
             };
 
             return View(model);
@@ -179,7 +180,7 @@ namespace Forum.Web.Controllers
         public IActionResult Search(TopicResultModel model)
         {
             _forumService.GetFilteredPosts(model.ForumId, model.SearchQuery);
-            return RedirectToAction("Topic", model);
+            return RedirectToAction("Topic", new {id = model.ForumId, model});
         }
     }
 }
