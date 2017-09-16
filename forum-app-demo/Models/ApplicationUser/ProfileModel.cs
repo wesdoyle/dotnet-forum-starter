@@ -11,6 +11,7 @@ namespace Forum.Web.Models.ApplicationUser
         public string UserRating { get; set; }
         public string ProfileImageUrl { get; set; }
         public bool IsActive { get; set; }
+        public bool IsAdmin { get; set; }
 
         public DateTime DateJoined { get; set; }
         public IFormFile ImageUpload { get; set; }

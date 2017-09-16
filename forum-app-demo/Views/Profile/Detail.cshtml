@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-8">
                 <span id="userName">@Model.Username</span> 
-                @if (User.IsInRole("Admin"))
+                @if (@Model.IsAdmin)
                 {
                     <span class="isAdmin">Admin</span>
                 }

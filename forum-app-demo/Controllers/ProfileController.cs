@@ -33,6 +33,7 @@ namespace Forum.Web.Controllers
         public IActionResult Detail(string id)
         {
             var user = _userService.GetById(id);
+            var userRoles = _userManager.GetRolesAsync(user).Result;
 
             var model = new ProfileModel()
             {
@@ -42,7 +43,8 @@ namespace Forum.Web.Controllers
                 Email = user.Email,
                 ProfileImageUrl = user.ProfileImageUrl,
                 DateJoined = user.MemberSince,
-                IsActive = user.IsActive
+                IsActive = user.IsActive,
+                IsAdmin = userRoles.Contains("Admin")
             };
 
             return View(model);

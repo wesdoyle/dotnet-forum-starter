@@ -8,7 +8,9 @@
 
   <ItemGroup>
     <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Remove="Properties\PublishProfiles\ForumWeb20170916043446 - Web Deploy.pubxml" />
     <None Remove="Properties\PublishProfiles\LambdaForumDemo - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\LambdaForumsDemo - Web Deploy.pubxml" />
   </ItemGroup>
 
 
