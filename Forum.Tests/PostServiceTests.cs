@@ -10,13 +10,9 @@ namespace Forum.Tests
 {
 
     [TestFixture]
+    [Category("Services")]
     public class PostServiceTests
     {
-        [OneTimeSetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public async Task Create_Post_Creates_New_Post_Via_Context()
         {

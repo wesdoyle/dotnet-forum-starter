@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace Forum.Tests
 {
+    [Category("Post Formatter")]
     [TestFixture]
     public class PostFormatterShould
     {

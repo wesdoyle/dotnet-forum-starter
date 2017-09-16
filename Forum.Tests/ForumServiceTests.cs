@@ -8,6 +8,7 @@ using NUnit.Framework;
 namespace Forum.Tests
 {
     [TestFixture]
+    [Category("Services")]
     public class ForumServiceTests
     {
         [Test]
