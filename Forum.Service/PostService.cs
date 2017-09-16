@@ -67,7 +67,10 @@ namespace Forum.Service
             var query = searchQuery.ToLower();
 
             return _context.Posts
-                .Include(post => post.Forum).Where(post => 
+                .Include(post => post.Forum)
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                .Where(post => 
                     post.Title.ToLower().Contains(query) 
                  || post.Content.ToLower().Contains(query));
         }
