@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Forum.Data;
+using Forum.Data.Models;
 using Forum.Service;
 using Forum.Web.Models.ApplicationUser;
 using Forum.Web.Models.Forum;
@@ -40,7 +41,7 @@ namespace Forum.Web.Controllers
                 Name = f.Title,
                 Description = f.Description,
                 NumberOfPosts = f.Posts?.Count() ?? 0,
-                LatestPost = GetLatestPost(f.Id) ?? new ForumListingPostModel(),
+                Latest = GetLatestPost(f.Id) ?? new PostListingModel(),
                 NumberOfUsers = _forumService.GetActiveUsers(f.Id).Count(),
                 ImageUrl = f.ImageUrl,
                 HasRecentPost = _forumService.HasRecentPost(f.Id) 
@@ -57,13 +58,13 @@ namespace Forum.Web.Controllers
             return View(model);
         }
 
-        public ForumListingPostModel GetLatestPost(int forumId)
+        public PostListingModel GetLatestPost(int forumId)
         {
             var post = _forumService.GetLatestPost(forumId);
 
             if(post != null)
             {
-                return new ForumListingPostModel
+                return new PostListingModel
                 {
                     Author = post.User != null ? post.User.UserName : "",
                     DatePosted = post.Created.ToString(CultureInfo.InvariantCulture),
@@ -71,7 +72,7 @@ namespace Forum.Web.Controllers
                 };
             }
 
-            return new ForumListingPostModel();
+            return new PostListingModel();
         }
 
         public IEnumerable<ApplicationUserModel> GetActiveUsers(int forumId)
@@ -85,14 +86,22 @@ namespace Forum.Web.Controllers
             });
         }
 
-        public IActionResult Topic(int id, TopicResultModel topicModel = null)
+        [HttpPost]
+        public IActionResult Search(int id, string searchQuery)
+        {
+            return RedirectToAction("Topic", new {id, searchQuery});
+        }
+
+        public IActionResult Topic(int id, string searchQuery)
         {
             var forum = _forumService.GetById(id);
-            var posts = _forumService.GetFilteredPosts(id, topicModel?.SearchQuery).ToList();
+            var posts = _forumService.GetFilteredPosts(id, searchQuery).ToList();
+            var noResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
 
-            var postListings = posts.Select(post => new ForumListingPostModel
+            var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
+                Forum = BuildForumListing(post),
                 Author = post.User.UserName,
                 AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
@@ -101,32 +110,32 @@ namespace Forum.Web.Controllers
                 RepliesCount = post.Replies.Count()
             }).OrderByDescending(post=>post.DatePosted);
 
-            var latestPost = postListings 
-                .OrderByDescending(post => post.DatePosted)
-                .FirstOrDefault();
-
-            var count = postListings.Count();
-
-            var forumListing = new ForumListingModel
+            var model = new TopicResultModel
             {
-                Id = forum.Id,
-                Name = forum.Title,
-                Description = forum.Description,
-                AllPosts = postListings,
-                ImageUrl = forum.ImageUrl,
-                LatestPost = latestPost,
-                NumberOfPosts = count,
-                NumberOfUsers = _forumService.GetActiveUsers(forum.Id).Count()
-            };
-
-            var model = new TopicResultModel 
-            {
-                Forum = forumListing,
-                ForumId = forum.Id,
-                SearchQuery = topicModel?.SearchQuery 
+                EmptySearchResults = noResults,
+                Posts = postListings,
+                SearchQuery = searchQuery,
+                Forum = BuildForumListing(forum)
             };
 
             return View(model);
+        }
+
+        private static ForumListingModel BuildForumListing(Data.Models.Forum forum)
+        {
+            return new ForumListingModel
+            {
+                Id = forum.Id,
+                ImageUrl = forum.ImageUrl,
+                Name = forum.Title,
+                Description = forum.Description
+            };
+        }
+
+        private static ForumListingModel BuildForumListing(Post post)
+        {
+            var forum = post.Forum;
+            return BuildForumListing(forum);
         }
 
         public IActionResult Create()
@@ -174,13 +183,6 @@ namespace Forum.Web.Controllers
             blockBlob.UploadFromStreamAsync(file.OpenReadStream());
 
             return blockBlob;
-        }
-
-        [HttpPost]
-        public IActionResult Search(TopicResultModel model)
-        {
-            _forumService.GetFilteredPosts(model.ForumId, model.SearchQuery);
-            return RedirectToAction("Topic", new {id = model.ForumId, model});
         }
     }
 }

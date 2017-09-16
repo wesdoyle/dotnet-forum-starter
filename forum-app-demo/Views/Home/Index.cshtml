@@ -36,7 +36,7 @@
                                 {
                                     <span>@post.RepliesCount Replies</span>
                                 }
-                                | <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.Author</a></span> (@post.AuthorRating) in <span class="postForum">@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
+                                | <span class="postUser"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">@post.Author</a></span> (@post.AuthorRating) in <span class="postForum"><a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.ForumId"></a>@post.ForumName</span> on <span class="postDate">@post.DatePosted</span>
                             </div>
                         </td>
                         <td></td>

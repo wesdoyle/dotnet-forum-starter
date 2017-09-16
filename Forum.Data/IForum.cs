@@ -18,6 +18,7 @@ namespace Forum.Data
         bool HasRecentPost(int id);
         Task Add(Models.Forum forum);
         Task SetForumImage(int id, Uri uri);
+        IEnumerable<Post> GetFilteredPosts(string searchQuery);
         IEnumerable<Post> GetFilteredPosts(int forumId, string modelSearchQuery);
     }
 }

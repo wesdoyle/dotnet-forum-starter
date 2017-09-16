@@ -13,7 +13,7 @@ namespace Forum.Web.Models.Forum
         public string ImageUrl { get; set; }
         public bool HasRecentPost { get; set; }
 
-        public ForumListingPostModel LatestPost { get; set; }
-        public IEnumerable<ForumListingPostModel> AllPosts { get; set; }
+        public PostListingModel Latest { get; set; }
+        public IEnumerable<PostListingModel> AllPosts { get; set; }
     }
 }

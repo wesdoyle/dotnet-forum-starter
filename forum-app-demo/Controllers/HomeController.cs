@@ -27,7 +27,7 @@ namespace Forum.Web.Controllers
         {
             var latest = _postService.GetLatestPosts(10);
 
-            var posts = latest.Select(post => new ForumListingPostModel
+            var posts = latest.Select(post => new PostListingModel
             {
                 Id = post.Id,
                 Title = post.Title,
@@ -37,7 +37,8 @@ namespace Forum.Web.Controllers
                 DatePosted = post.Created.ToString(),
                 RepliesCount = _postService.GetReplyCount(post.Id),
                 ForumName = post.Forum.Title,
-                ForumImageUrl = _postService.GetForumImageUrl(post.Id)
+                ForumImageUrl = _postService.GetForumImageUrl(post.Id),
+                ForumId = post.Forum.Id
             });
 
             return new HomeIndexModel()
@@ -47,23 +48,10 @@ namespace Forum.Web.Controllers
 
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public IActionResult Search(string searchQuery)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return RedirectToAction("Topic", "Forum", new { searchQuery });
         }
     }
 }

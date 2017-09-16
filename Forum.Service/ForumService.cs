@@ -104,12 +104,18 @@ namespace Forum.Service
             await _context.SaveChangesAsync();
         }
 
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            return _postService.GetFilteredPosts(searchQuery);
+        }
+
         public IEnumerable<Post> GetFilteredPosts(int forumId, string searchQuery)
         {
-            var forum = GetById(forumId);
+            if (forumId == 0) return _postService.GetFilteredPosts(searchQuery);
 
-            return string.IsNullOrEmpty(searchQuery) 
-                ? forum.Posts 
+            var forum = GetById(forumId);
+            return string.IsNullOrEmpty(searchQuery)
+                ? forum.Posts
                 : forum.Posts.Where(post
                     => post.Title.Contains(searchQuery) || post.Content.Contains(searchQuery));
         }

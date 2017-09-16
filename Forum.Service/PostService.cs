@@ -62,6 +62,13 @@ namespace Forum.Service
             return posts;
         }
 
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            var query = searchQuery.ToLower();
+            return _context.Posts.Where(post 
+                => post.Title.ToLower().Contains(query) || post.Content.ToLower().Contains(query));
+        }
+
         public IEnumerable<ApplicationUser> GetAllUsers(IEnumerable<Post> posts)
         {
             var users = new List<ApplicationUser>();

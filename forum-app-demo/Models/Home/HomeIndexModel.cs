@@ -5,6 +5,6 @@ namespace Forum.Web.Models.Home
 {
     public class HomeIndexModel
     {
-        public IEnumerable<ForumListingPostModel> LatestPosts { get; set; }
+        public IEnumerable<PostListingModel> LatestPosts { get; set; }
     }
 }
