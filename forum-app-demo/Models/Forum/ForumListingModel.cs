@@ -15,7 +15,14 @@ namespace Forum.Web.Models.Forum
 
         public ForumListingPostModel LatestPost { get; set; }
         public IEnumerable<ForumListingPostModel> AllPosts { get; set; }
+        public ForumSearchModel Filter { get; set; }
 
+        //public string SearchQuery { get; set; }
+    }
+
+    public class ForumSearchModel
+    {
+        public int ForumId { get; set; }
         public string SearchQuery { get; set; }
     }
 }

@@ -6,7 +6,7 @@
             <span id="forumName">@Model.Name Forum</span>
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm"> 
-                    <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
+                    <input asp-for="Filter.SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
                     <button type="submit" class="btn buttonSearch">
                         <i class="material-icons">search</i>
                     </button>
