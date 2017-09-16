@@ -11,16 +11,16 @@ namespace Forum.Web.Controllers
 {
     public class SearchController : Controller
     {
-        private readonly IForum _forumService;
+        private readonly IPost _postService;
 
-        public SearchController(IForum forumService ) 
+        public SearchController(IPost postService) 
         {
-            _forumService = forumService;
+            _postService = postService;
         }
 
         public IActionResult Results(string searchQuery)
         {
-            var posts = _forumService.GetFilteredPosts(searchQuery).ToList();
+            var posts = _postService.GetFilteredPosts(searchQuery).ToList();
             var noResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
 
             var postListings = posts.Select(post => new PostListingModel
