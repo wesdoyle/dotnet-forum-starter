@@ -1,0 +1,9 @@
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\bin\Release\netcoreapp2.0\Forum.Data.deps.json
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\bin\Release\netcoreapp2.0\Forum.Data.dll
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\bin\Release\netcoreapp2.0\Forum.Data.pdb
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Release\netcoreapp2.0\Forum.Data.csprojResolveAssemblyReference.cache
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Release\netcoreapp2.0\Forum.Data.csproj.CoreCompileInputs.cache
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Release\netcoreapp2.0\Forum.Data.AssemblyInfoInputs.cache
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Release\netcoreapp2.0\Forum.Data.AssemblyInfo.cs
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Release\netcoreapp2.0\Forum.Data.dll
+C:\Users\Wes\Projects\ProductiveDev\forum-app-demo\Forum.Data\obj\Release\netcoreapp2.0\Forum.Data.pdb
