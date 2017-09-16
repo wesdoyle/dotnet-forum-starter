@@ -85,44 +85,7 @@ namespace Forum.Web.Controllers
             });
         }
 
-        public IActionResult Topic(ForumSearchModel searchModel)
-        {
-            var forum = _forumService.GetById(searchModel.ForumId);
-            var posts = _forumService.FilteredPosts(searchModel.ForumId, searchModel.SearchQuery);
-
-            var postListings = posts.Select(post => new ForumListingPostModel
-            {
-                Id = post.Id,
-                Author = post.User.UserName,
-                AuthorId = post.User.Id,
-                AuthorRating = post.User.Rating,
-                Title = post.Title,
-                DatePosted = post.Created.ToString(CultureInfo.InvariantCulture),
-                RepliesCount = post.Replies.Count()
-            }).OrderByDescending(post=>post.DatePosted);
-
-            var latestPost = postListings 
-                .OrderByDescending(post => post.DatePosted)
-                .FirstOrDefault();
-
-            var count = postListings.Count();
-
-            var model = new ForumListingModel
-            {
-                Id = forum.Id,
-                Name = forum.Title,
-                Description = forum.Description,
-                AllPosts = postListings,
-                ImageUrl = forum.ImageUrl,
-                LatestPost = latestPost,
-                NumberOfPosts = count,
-                NumberOfUsers = _forumService.GetActiveUsers(forum.Id).Count()
-            };
-
-            return View(model);
-        }
-
-        public IActionResult Topic(int id)
+        public IActionResult Topic(int id, ForumSearchModel search)
         {
             var forum = _forumService.GetById(id);
             var posts = forum.Posts;
