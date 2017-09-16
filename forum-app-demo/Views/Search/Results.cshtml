@@ -30,11 +30,16 @@
                                     <div class="forumSubTitle">
                                         <div>
                                             <span class="postAuthor">
+                                                by: 
                                                 <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
                                                     @post.Author
                                                 </a>
+                                                (@post.AuthorRating) on:
                                             </span>
-                                            (@post.AuthorRating) on
+                                            <span class="postForum">
+                                                in:
+                                                <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Forum.Id">@post.Forum.Name</a>
+                                            </span>
                                             <span class="postDate">
                                                 @post.DatePosted
                                             </span>
